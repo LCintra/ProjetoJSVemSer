@@ -19,5 +19,11 @@
       "candidaturas": [],
       "id": 2
     }
+  ],
+  "vagas":[
+    {
+      "id":"0",
+      "titulo":"Vaga teste"
+    }
   ]
 }

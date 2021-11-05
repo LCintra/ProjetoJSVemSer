@@ -38,8 +38,14 @@ class Vaga{
     constructor(id,titulo,remuneracao,candidatos){
         this.id = id;
         this.titulo = titulo;
-        this.remuneracao = remuneracao;
+        this.remuneracao = this.formataRemuneracao(remuneracao);
         this.candidatos = candidatos;
+    }
+    formataRemuneracao = (remuneracao) => {
+        if(remuneracao[0] != 'R' && remuneracao[1] != '$'){
+            remuneracao = 'R$ ' + remuneracao
+        }
+        return remuneracao
     }
 }
 
@@ -51,6 +57,20 @@ const irPara = (origem, destino) => {
     elementoDestino.className = elementoDestino.className.replace('d-none', 'd-flex');
     elementoOrigem.className = elementoOrigem.className.replace('d-flex', 'd-none');
 }
+
+//#region Validação input tipo
+
+const validarTipoUsuario = () =>{
+    let tipoInputValue = document.getElementById('type-input-registration').value
+    let primeiroEmpregoInput = document.getElementById('first-job-input-registration')
+    if(tipoInputValue == 'Trabalhador'){
+        primeiroEmpregoInput.className = primeiroEmpregoInput.className.replace('d-none','d-flex')
+    } else {
+        primeiroEmpregoInput.className = primeiroEmpregoInput.className.replace('d-flex','d-none')
+    }
+}
+
+//#end region validação input tipo
 
 //#region Validação Nome
 const validarNome = () =>{
@@ -152,11 +172,9 @@ const validarData = () => {
 
 const adicionarMascaraData = (input, data) => {
     let listaCaracteres = [...data];
-    // [ '1', '0', '0', '5' ]
     
     if(listaCaracteres && listaCaracteres.length) {
         let dataDigitada = listaCaracteres.filter(c => !isNaN(parseInt(c))).reduce((a, b) => a + b);
-        // 10052
         const { length } = dataDigitada;
 
         switch(length) { 
@@ -183,18 +201,31 @@ const validarCadastro = () => {
 }
 
 //Função para adicionar usuário
-const adicionarUsuário = () => {
-    const novoUsuario = new Usuario(tipo,nome,dataNascimento,email,senha,primeiroEmprego,candidaturas)
+const cadastrarUsuário = () => {
+    let nomeInput = document.getElementById('name-input-registration')
+    let dataInput = document.getElementById('date-input-registration');
+    let emailInput = document.getElementById('email-input-registration');
+    let senhaInput = document.getElementById('password-input-registration');
+    let tipoInput = document.getElementById('type-input-registration')
+    let primeiroEmpregoInput = document.getElementById('first-job-input-registration')
+    const novoUsuario = new Usuario(tipoInput,nomeInput,dataInput,emailInput,senhaInput,primeiroEmpregoInput,[])
     axios.post('http://localhost:3000/usuarios',novoUsuario)
     .then(response =>{
         novoUsuario.id = response.data.id
+        resetarCampos(nomeInput,dataInput,emailInput,senhaInput,tipoInput,primeiroEmpregoInput)
         console.log(novoUsuario)
     })
 }
 
+//Limpar campos
+
+const resetarCampos = (...campos) => {
+    campos.forEach(c => c.value = '');
+}
+
 //Função para validar o login
 const validarLogin = () => {
-    axios.get('http://localhost:3000/trabalhador')
+    axios.get('http://localhost:3000/usuarios')
         .then(response => {
             let emailDigitado = document.getElementById('email-input-login').value;
             let senhaDigitada = document.getElementById('password-input-login').value;
@@ -207,4 +238,10 @@ const validarLogin = () => {
             console.log(response)
         })
         .catch(error => console.error(error));
+}
+
+//função para mostrar a lista de vagas
+
+const mostrarListaDeVagas = () =>{
+    
 }
