@@ -61,9 +61,9 @@ const irPara = (origem, destino) => {
 //#region Validação input tipo
 
 const validarTipoUsuario = () =>{
-    let tipoInputValue = document.getElementById('type-input-registration').value
+    let tipoSelectValue = document.getElementById('type-select-registration').value
     let primeiroEmpregoInput = document.getElementById('first-job-input-registration')
-    if(tipoInputValue == 'Trabalhador'){
+    if(tipoSelectValue == 'Trabalhador'){
         primeiroEmpregoInput.className = primeiroEmpregoInput.className.replace('d-none','d-flex')
     } else {
         primeiroEmpregoInput.className = primeiroEmpregoInput.className.replace('d-flex','d-none')
@@ -243,5 +243,5 @@ const validarLogin = () => {
 //função para mostrar a lista de vagas
 
 const mostrarListaDeVagas = () =>{
-    
+
 }

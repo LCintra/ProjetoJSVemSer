@@ -1,5 +1,17 @@
 /* CSS Login */
 
+.d-none{
+    display:none;
+    }
+    
+.text-danger{
+color:red;
+}
+
+.d-flex{
+display:flex;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 #login .container {
