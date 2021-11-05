@@ -1,0 +1,23 @@
+{
+  "usuarios": [
+    {
+      "nome": "Trabalhador Teste",
+      "email": "a",
+      "senha": "a",
+      "data": "12/11/2002",
+      "id": 0,
+      "primeiroEmprego": true,
+      "candidaturas": []
+    },
+    {
+      "tipo": "trabalhador",
+      "nome": "João",
+      "dataNascimento": "22/11/2002",
+      "email": "teste@gmail,com",
+      "senha": "senha321",
+      "primeiroEmprego": false,
+      "candidaturas": [],
+      "id": 2
+    }
+  ]
+}
