@@ -1,4 +1,4 @@
-/* Login */
+/* CSS Login */
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
@@ -77,4 +77,42 @@
 
 #login a:hover {
     text-decoration: underline;
+}
+
+/* CSS Cadastro */
+
+#cadastro html, h1, nav, ul, li, * {
+    margin: 0;
+    padding: 0;
+}
+#cadastro #container {
+    margin: 0 auto;
+    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+}
+#cadastro {
+    margin-top: 150px;
+    background-color: #FFFFFF;
+    width: 100%;
+    height: 700px;
+    border: 2px solid black;
+}
+#cadastro h1 {
+    background-color: black;
+    color: #FFF;
+    padding: 10px;
+    display: flex;
+    font-size: medium;
+    justify-content: center;
+}
+#cadastro #form {
+    width: auto;
+    padding: 10px 100px;
+    justify-content: center;
+    border: 2px solid red;
+}
+#cadastro #input {
+    margin-bottom: 25px;
+    width: 100%;
 }
