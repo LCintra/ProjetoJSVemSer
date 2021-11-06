@@ -235,6 +235,29 @@ const resetarCampos = (...campos) => {
     campos.forEach(c => c.value = '');
 }
 
+//limpar campos ao clicar em voltar
+
+const limparCamposAoVoltar = () =>{
+    let nomeInput = document.getElementById('name-input-registration');
+    let dataInput = document.getElementById('date-input-registration');
+    let emailInput = document.getElementById('email-input-registration');
+    let senhaInput = document.getElementById('password-input-registration');
+    let primeiroEmpregoInput = document.getElementById('first-job-input-registration');
+    let tipoInput = document.getElementById('type-input-registration');
+    let erronome = document.getElementById('name-registration-error');
+    erronome.className = erronome.className.replace('text-danger','d-none');
+    let erroData = document.getElementById('date-registration-error');
+    erroData.className = erroData.className.replace('text-danger','d-none');
+    let erroEmail = document.getElementById('email-registration-error')
+    erroEmail.className = erroEmail.className.replace('text-danger','d-none')
+    let erroSenha = document.getElementById('password-registration-error')
+    erroSenha.className = erroSenha.className.replace('text-danger','d-none')
+    tipoInput.value = 'q1'
+    validarTipoUsuario()
+    primeiroEmpregoInput.checked = false
+    resetarCampos(nomeInput,dataInput,emailInput,senhaInput)
+}
+
 //Função para validar o login
 const validarLogin = () => {
     axios.get('http://localhost:3000/usuarios')
