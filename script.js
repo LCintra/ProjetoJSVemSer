@@ -237,7 +237,7 @@ const resetarCampos = (...campos) => {
 
 //limpar campos ao clicar pra ir pra tela de cadastro
 
-const limparCamposAoIrParaCadastro = () =>{
+const limparCamposAoSairDoLogin = () =>{
     let emailInput = document.getElementById('email-input-login')
     let senhaInput = document.getElementById('password-input-login')
     resetarCampos(emailInput,senhaInput)
