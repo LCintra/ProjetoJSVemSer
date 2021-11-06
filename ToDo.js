@@ -29,7 +29,6 @@
             
             2c) Teremos 2 botões, um para "Voltar" (limpa os campos do cadastro e volta para login) e outro para "Cadastrar" (cadastra, limpa os campos, retorna para o login e dá mensagem de cadastro concluído);
 
- 
         3) Tela de Início (após login):
             a) Mostrar listagem de vagas cadastradas;
             

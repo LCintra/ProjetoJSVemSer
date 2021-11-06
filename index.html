@@ -99,26 +99,27 @@
                     <h1>CADASTRO DE VAGAS</h1>
                 </div>
                 <div class="recrutador-vaga">
-                    <label for="job-title-input">Título</label>
-                    <input id="job-title-input" class="input" type="text">
-                    <span id="job-name-registration-error" class="d-none">Título inválido</span>
+                    <label for="job-title-input">Título: *</label>
+                    <input id="job-title-input" value='' class="input" type="text">
+                    <span id="job-title-registration-error" class="d-none">Por favor preencha o campo</span>
                 </div>
                 <div class="recrutador-vaga">
-                    <label for="job-description-input">Descrição</label>
+                    <label for="job-description-input">Descrição: *</label>
                     <textarea id="job-description-input" cols="10" rows="5"></textarea>
-                    <span id="job-description-registration-error" class="d-none">Descrição inválida</span>
+                    <span id="job-description-registration-error" class="d-none">Por favor preencha o campo</span>
                 </div>
                 <div class="recrutador-vaga">
-                    <label for="job-salary-input">Remuneração</label>
+                    <label for="job-salary-input">Remuneração: *</label>
                     <input id="job-salary-input" class="input" type="text">
-                    <span id="job-salary-registration-error" class="d-none">Remuneração inválida</span>
+                    <span id="job-salary-number-registration-error" class="d-none">Coloque apenas números</span>
+                    <span id="job-salary-registration-error" class="d-none">Por favor preencha o campo</span>
                 </div>
                 <div class="buttons-cadastro">
                     <div>
-                        <button onclick="irPara('cadastro-de-vagas', 'home') ; limparCamposAoVoltar()">Voltar</button>
+                        <button onclick="irPara('cadastro-vagas', 'home-recrutador') ; limparCamposAoVoltar()">Voltar</button>
                     </div>
                     <div>
-                        <button onclick=" " class="button1">Cadastrar Vaga</button>
+                        <button id="cadastrar-nova-vaga" onclick="CadastrarVaga()" class="button1">Cadastrar Vaga</button>
                     </div>
                 </div>
             </div>
@@ -155,7 +156,7 @@
                         <button onclick="irPara('home-recrutador', 'login');limparCamposAoSairDoLogin()">Sair</button>
                     </div>
                     <div>
-                        <button class="button1">Cadastrar Vaga</button>
+                        <button onclick="irPara('home-recrutador', 'cadastro-vagas')" class="button1">Cadastrar Vaga</button>
                     </div>
                 </div>
             </div>

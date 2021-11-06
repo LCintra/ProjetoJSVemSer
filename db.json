@@ -46,13 +46,73 @@
       "id": "0",
       "titulo": "Vaga teste",
       "descricao": "Vaga aberta para teste",
-      "remuneracao": "R$1000"
+      "remuneracao": "1000"
     },
     {
       "id": "1",
       "titulo": "UX/UI",
       "descricao": "Trabalhar na área de UX/UI",
-      "remuneracao": "R$10000"
+      "remuneracao": "10000"
+    },
+    {
+      "id": 2,
+      "titulo": "Desenvolvedor",
+      "descricao": "Dev Front End",
+      "remuneracao": "3000"
+    },
+    {
+      "id": 3,
+      "titulo": "dsadsadsa",
+      "descricao": "sadsadasd",
+      "remuneracao": "10000"
+    },
+    {
+      "id": 4,
+      "titulo": "dasdas",
+      "descricao": "dsadsadsadsa",
+      "remuneracao": "800000"
+    },
+    {
+      "id": 5,
+      "titulo": "dasd",
+      "descricao": "sadsadsa",
+      "remuneracao": "1"
+    },
+    {
+      "id": 6,
+      "titulo": "asd",
+      "descricao": "sda",
+      "remuneracao": "1332"
+    },
+    {
+      "id": 7,
+      "titulo": "aaaaa",
+      "descricao": "aaaaa",
+      "remuneracao": "23456"
+    },
+    {
+      "id": 8,
+      "titulo": "aaa",
+      "descricao": "aaa",
+      "remuneracao": "12345"
+    },
+    {
+      "id": 9,
+      "titulo": "asdfa",
+      "descricao": "asdfa",
+      "remuneracao": "1324"
+    },
+    {
+      "id": 10,
+      "titulo": "sadsa",
+      "descricao": "dsadsadsa",
+      "remuneracao": "12321321"
+    },
+    {
+      "id": 11,
+      "titulo": "gvhguj",
+      "descricao": "hjhoiu",
+      "remuneracao": "1233213"
     }
   ]
 }

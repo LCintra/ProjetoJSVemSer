@@ -1,3 +1,5 @@
+// const axios = require('axios').default;
+
 //Criando as Classes
 class Usuario {
     id;
@@ -260,10 +262,13 @@ const limparCamposAoVoltar = () =>{
     erroEmail.className = erroEmail.className.replace('text-danger','d-none')
     let erroSenha = document.getElementById('password-registration-error')
     erroSenha.className = erroSenha.className.replace('text-danger','d-none')
+    let jobTitleInput = document.getElementById('job-title-input')
+    let jobDescriptionInput = document.getElementById('job-description-input')
+    let jobSalaryInput = document.getElementById('job-salary-input')
     tipoInput.value = 'q1'
     validarTipoUsuario()
     primeiroEmpregoInput.checked = false
-    resetarCampos(nomeInput,dataInput,emailInput,senhaInput)
+    resetarCampos(nomeInput,dataInput,emailInput,senhaInput, jobTitleInput, jobDescriptionInput, jobSalaryInput)
 }
 
 //Função para validar o login
@@ -299,7 +304,7 @@ const esqueceuASenha = () =>{
         let emailExiste = response.data.some(colaborador => colaborador.email == emailInserido)
         if(emailExiste){
             let colaborador = response.data.find(colaborador => colaborador.email == emailInserido)
-             alert(`Sua senha é ${colaborador.senha}`)
+            alert(`Sua senha é ${colaborador.senha}`)
         } else {
             alert('Não há nenhum usuário cadastrado com esse e-mail!')
         }
@@ -339,7 +344,7 @@ const mostrarListaDeVagas = (tipo) =>{
 
             let tituloText = document.createTextNode(response.titulo)
 
-            let remuneracaoText = document.createTextNode(response.remuneracao)
+            let remuneracaoText = document.createTextNode(`R$ ${response.remuneracao}`)
             
             let tituloDefaultText = document.createTextNode('Título:')
 
@@ -362,3 +367,85 @@ const mostrarListaDeVagas = (tipo) =>{
         })
     })
 }
+
+// CADASTRO DE VAGAS
+function validaCampos(title, descricao, salary) {    
+    let erroSalary = document.getElementById('job-salary-number-registration-error')
+    let erroSalary2 = document.getElementById('job-salary-registration-error')
+
+    let erroTitle = document.getElementById('job-title-registration-error')
+    let erroDescricao = document.getElementById('job-description-registration-error')
+
+    let valid = true
+
+    if(title === '') {
+        erroTitle.classList.remove('d-none')
+        erroTitle.classList.add('text-danger')
+        erroTitle.style.paddingTop = '10px'
+
+        valid = false
+    } else {
+        erroTitle.classList.add('d-none')
+    }
+
+    if(descricao === '') {
+        erroDescricao.classList.remove('d-none')
+        erroDescricao.classList.add('text-danger')
+        erroDescricao.style.paddingTop = '10px'
+
+        valid = false
+    } else {
+        erroDescricao.classList.add('d-none')
+    }
+
+
+    if(salary === '') {
+        erroSalary2.classList.remove('d-none')
+        erroSalary2.classList.add('text-danger')
+        erroSalary2.style.paddingTop = '10px'
+
+        valid = false
+    } else if ( !Number(salary)) {
+        erroSalary.classList.remove('d-none')
+        erroSalary.classList.add('text-danger')
+        erroSalary.style.paddingTop = '10px'
+        erroSalary2.classList.add('d-none')
+
+        valid = false
+    } else {
+        erroSalary.classList.add('d-none')
+        erroSalary2.classList.add('d-none')
+    }
+
+    return valid
+
+}
+
+const buttonVaga = document.getElementById('cadastrar-nova-vaga')
+
+async function CadastrarVaga() {
+    const title = document.querySelector('#job-title-input').value
+    const descricao = document.querySelector('#job-description-input').value
+    const salary = document.querySelector('#job-salary-input').value
+
+    const valid = validaCampos(title,descricao,salary)
+
+    if(!valid) return;
+
+    const vagas = await axios.get('http://localhost:3000/vagas')
+
+    const newVaga = await axios.post('http://localhost:3000/vagas', {
+        id: vagas.data.length,
+        titulo: title,
+        descricao: descricao,
+        remuneracao: salary
+    })
+
+    if(newVaga.status === 200){
+        limparCamposAoVoltar()
+        irPara('cadastro-vagas', 'home-recrutador')
+    }
+}
+    
+    
+
