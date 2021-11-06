@@ -103,43 +103,81 @@ display:flex;
 
 /* CSS Cadastro */
 
-#cadastro html, h1, nav, ul, li, * {
-    margin: 0;
-    padding: 0;
-}
-#cadastro #container {
-    margin: 0 auto;
+.cadastro {
+    width: 100%;
     max-width: 1200px;
+    font-family: 'Roboto', sans-serif;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
-#cadastro {
-    margin-top: 150px;
-    background-color: #FFFFFF;
+.cadastro-text {
     width: 100%;
-    height: 700px;
-    border: 2px solid black;
+    background-color: #2C2C2C;
+    text-align: center;
+    font-size: 20px;
+    padding: 10px 0;
+    color: white;
+    margin: 0;
+    box-sizing: border-box;
 }
-#cadastro h1 {
-    background-color: black;
-    color: #FFF;
-    padding: 10px;
+.cadastro form {
+    padding: 25px;
+    gap: 10px;
     display: flex;
-    font-size: medium;
     justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    box-sizing: border-box;
 }
-#cadastro #form {
-    width: auto;
-    padding: 10px 100px;
-    justify-content: center;
-    border: 2px solid red;
+select {
+    width: 657px;
+    height: 30px;
 }
-#cadastro #input {
-    margin-bottom: 25px;
-    width: 100%;
+input {
+    width: 650px;
+    height: 25px;
+}
+.buttons-cadastro {
+    display: flex;
+    justify-content: space-between;
+    width: 650px;
+}
+.buttons-cadastro button {
+    width: 150px;
+    height: 40px;
+    font-size: 18px;
+    border-radius: 7px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: none;
+    cursor: pointer;
+    transition: 0.7s;
 }
 
+.buttons-cadastro button:hover {
+    transform: scale(1.1); 
+}
 
+.buttons-cadastro button:active {
+    transform: scale(0.8); 
+}
+
+.button1 {
+    background-color: #2C2C2C;
+    color: white;
+}
+
+/* Home */
+.home-info {
+    width: 650px;
+    border: 1px solid black;
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    box-sizing: border-box;
+}
 
 
 /* Tela de Detalhe de Vaga */

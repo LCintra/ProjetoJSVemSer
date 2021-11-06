@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- LOGIN -->
     <div id="login" class="container">
         <form>
             <div>
@@ -38,38 +39,236 @@
             </div>
         </form>
     </div>
+    <!-- CADASTRO -->
     <div id="cadastro">
-        <h1>Cadastro</h1>   
-        <div id="form">
-            <form action="form">
-                <label for="user">Tipo de Usuário</label>
-                <select required name="user" class="input" id="type-select-registration">
-                    <option value="q1"></option>
-                    <option value="q2"></option>
-                </select>
+        <div class="cadastro" class="container">
+            <div class="border-detalhe">
+                <div class="cadastro-text">
+                    <h1>CADASTRO</h1>
+                </div class="cadastro-form">
+                <form action="cadastro">
+                    <label for="user">Tipo de Usuário</label>
+                    <select required name="user" id="user">
+                        <option value="q1"></option>
+                        <option value="q2"></option>
+                    </select>
+                    <label for="name">Nome Completo*</label>
+                    <input type="text" required>
+                    <label for="date">Data de Nascimento*</label>
+                    <input type="text" required>
+                    <label for="email">Email*</label>
+                    <input type="email" name="email" id="email" required>
+                    <label for="password">Senha*</label>
+                    <input type="password" required>
+                    
+                    <input type="checkbox" class="checkbox">
+                    <label>Primeiro Emprego?</label>
+                    
+                    <div class="buttons-cadastro">
+                        <div>
+                            <button>Voltar</button>
+                        </div>
+                        <div>
+                            <button class="button1">Cadastrar</button>
+                        </div>
+                    </div>
+                </form>
+                <div>
 
-                <label for="name">Nome Completo*</label>
-                <input id="name-input-registration" class="input" type="text" name="username"required>
-
-                <label for="date">Data de Nascimento*</label>
-                <input id="date-input-registration" class="input" type="text" name="username"required>
-
-                <label for="date">Email*</label>
-                <input id="email-input-registration" class="input" type="email" name="username"required>
-
-                <label for="date">Senha*</label>
-                <input id="password-input-registration" class="input" type="password" name="username"required>
-
-                <input id="first-job-input-registration" type="checkbox"><p>Primeiro Emprego?</p>
-
-                <button>Voltar</button>
-                <button>Cadastrar</button>
-            </form>
+                </div>
+            </div>
         </div>
     </div>
-    <div id="home">
+    <!-- HOME-TRABALHADOR -->
+    <div class="">
+        <div class="home-vaga" class="container">
+            <div class="border-detalhe">
+                <div class="recrutador-titulo">
+                    <h1>VAGAS</h1>
+                </div>
+    
+                    <div class="home-info">
+                        <div>
+                        <h2>Título:</h2> 
+                        <p>&nbsp;Desenvolvedor Full-Stack</p>
+                        </div>
+                        <div>
+                        <h2>Remuneração:</h2>
+                        <p>&nbsp;R$ 5.500,00</p>
+                        </div>
+                    </div>
+
+                    <div class="home-info">
+                        <div>
+                        <h2>Título:</h2> 
+                        <p>&nbsp;Analista de Testes</p>
+                        </div>
+                        <div>
+                        <h2>Remuneração:</h2>
+                        <p>&nbsp;R$ 3.200,00</p>
+                        </div>
+                    </div>
+
+                    <div class="home-info">
+                        <div>
+                        <h2>Título:</h2> 
+                        <p>&nbsp;Desenvolvedor Java Sênior</p>
+                        </div>
+                        <div>
+                        <h2>Remuneração:</h2>
+                        <p>&nbsp;R$ 9.000,00</p>
+                        </div>
+                    </div>
+
+                    <div class="home-info">
+                        <div>
+                        <h2>Título:</h2> 
+                        <p>&nbsp;Desenvolvedor Frontend Júnior</p>
+                        </div>
+                        <div>
+                        <h2>Remuneração:</h2>
+                        <p>&nbsp;R$ 2.000,00</p>
+                        </div>
+                    </div>
+
+                    <div class="home-info">
+                        <div>
+                        <h2>Título:</h2> 
+                        <p>&nbsp;Desenvolvedor Full-Stack Sênior</p>
+                        </div>
+                        <div>
+                        <h2>Remuneração:</h2>
+                        <p>&nbsp;R$ 8.500,00</p>
+                        </div>
+                    </div>
+
+                    <div class="home-info">
+                        <div>
+                        <h2>Título:</h2> 
+                        <p>&nbsp;Analista de Sistemas</p>
+                        </div>
+                        <div>
+                        <h2>Remuneração:</h2>
+                        <p>&nbsp;R$ 3.000,00</p>
+                        </div>
+                    </div>
+
+                    <div class="home-info">
+                        <div>
+                        <h2>Título:</h2> 
+                        <p>&nbsp;Project Manager</p>
+                        </div>
+                        <div>
+                        <h2>Remuneração:</h2>
+                        <p>&nbsp;R$ 4.500,00</p>
+                        </div>
+                    </div>
+
+                    <div class="buttons-recrutador">
+                        <div>
+                            <button class="button1">Sair</button>
+                        </div>
+                    </div>
+               
 
     </div>
+
+ <!-- HOME-RECRUTADOR -->
+ <div class="">
+    <div class="home-vaga" class="container">
+        <div class="border-detalhe">
+            <div class="recrutador-titulo">
+                <h1>VAGAS</h1>
+            </div>
+
+                <div class="home-info">
+                    <div>
+                    <h2>Título:</h2> 
+                    <p>&nbsp;Desenvolvedor Full-Stack</p>
+                    </div>
+                    <div>
+                    <h2>Remuneração:</h2>
+                    <p>&nbsp;R$ 5.500,00</p>
+                    </div>
+                </div>
+
+                <div class="home-info">
+                    <div>
+                    <h2>Título:</h2> 
+                    <p>&nbsp;Analista de Testes</p>
+                    </div>
+                    <div>
+                    <h2>Remuneração:</h2>
+                    <p>&nbsp;R$ 3.200,00</p>
+                    </div>
+                </div>
+
+                <div class="home-info">
+                    <div>
+                    <h2>Título:</h2> 
+                    <p>&nbsp;Desenvolvedor Java Sênior</p>
+                    </div>
+                    <div>
+                    <h2>Remuneração:</h2>
+                    <p>&nbsp;R$ 9.000,00</p>
+                    </div>
+                </div>
+
+                <div class="home-info">
+                    <div>
+                    <h2>Título:</h2> 
+                    <p>&nbsp;Desenvolvedor Frontend Júnior</p>
+                    </div>
+                    <div>
+                    <h2>Remuneração:</h2>
+                    <p>&nbsp;R$ 2.000,00</p>
+                    </div>
+                </div>
+
+                <div class="home-info">
+                    <div>
+                    <h2>Título:</h2> 
+                    <p>&nbsp;Desenvolvedor Full-Stack Sênior</p>
+                    </div>
+                    <div>
+                    <h2>Remuneração:</h2>
+                    <p>&nbsp;R$ 8.500,00</p>
+                    </div>
+                </div>
+
+                <div class="home-info">
+                    <div>
+                    <h2>Título:</h2> 
+                    <p>&nbsp;Analista de Sistemas</p>
+                    </div>
+                    <div>
+                    <h2>Remuneração:</h2>
+                    <p>&nbsp;R$ 3.000,00</p>
+                    </div>
+                </div>
+
+                <div class="home-info">
+                    <div>
+                    <h2>Título:</h2> 
+                    <p>&nbsp;Project Manager</p>
+                    </div>
+                    <div>
+                    <h2>Remuneração:</h2>
+                    <p>&nbsp;R$ 4.500,00</p>
+                    </div>
+                </div>
+
+                <div class="buttons-recrutador">
+                    <div>
+                        <button>Voltar</button>
+                    </div>
+                    <div>
+                        <button class="button1">Cadastrar Vaga</button>
+                    </div>
+                </div>
+           
+
+</div>
     <!-- DETALHE DE VAGA RECRUTADOR -->
 
     <div class="">
