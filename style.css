@@ -108,6 +108,7 @@ display:flex;
 
 #login a:hover {
     text-decoration: underline;
+    cursor: pointer;
 }
 
 /* CSS Cadastro */
@@ -182,11 +183,60 @@ select {
     border: 1px solid black;
     border-radius: 7px;
     display: flex;
-    justify-content: center;
-    flex-direction: column;
+    justify-content: space-between;
+    flex-direction: row;
     box-sizing: border-box;
+    padding: 20px;
 }
 
+.home-info:hover {
+    cursor: pointer;
+    background-color: rgb(235, 235, 235);
+}
+
+/* espaçamento top */
+.home-vaga {
+    margin-top: 15%
+}
+
+.home-info h2 {
+    font-weight: bold;
+}
+
+.left-info{
+    display: flex;
+}
+
+.right-info{
+    display: flex;
+}
+
+.buttons-recrutador1 {
+    display: flex;
+    
+}
+
+.buttons-recrutador1 button:hover {
+    transform: scale(1.1); 
+}
+
+.buttons-recrutador1 button:active {
+    transform: scale(0.8); 
+}
+
+.button2 {
+    align-self: center;
+    width: 150px;
+    height: 40px;
+    font-size: 18px;
+    border-radius: 7px;
+    margin-bottom: 20px;
+    border: none;
+    cursor: pointer;
+    transition: 0.7s;
+    background-color: #2C2C2C;
+    color: white;
+}
 
 /* Tela de Detalhe de Vaga */
 
@@ -331,17 +381,3 @@ select {
     color: white;
 }
 
-.home-info{
-    display: flex; 
-    flex-direction: row; 
-    justify-content: space-between; 
-    padding:10px
-}
-
-.left-info{
-    display: flex;
-}
-
-.right-info{
-    display: flex;
-}
