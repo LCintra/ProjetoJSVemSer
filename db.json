@@ -44,7 +44,15 @@
   "vagas": [
     {
       "id": "0",
-      "titulo": "Vaga teste"
+      "titulo": "Vaga teste",
+      "descricao": "Vaga aberta para teste",
+      "remuneracao": "R$1000"
+    },
+    {
+      "id": "1",
+      "titulo": "UX/UI",
+      "descricao": "Trabalhar na área de UX/UI",
+      "remuneracao": "R$10000"
     }
   ]
 }

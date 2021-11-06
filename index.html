@@ -37,7 +37,7 @@
                 </div>
                 <div class="low-border">
                     <a onclick="esqueceuASenha()">Esqueceu a senha?</a>
-                    <a onclick="irPara('login', 'cadastro')">Não possui cadastro?</a>
+                    <a onclick="irPara('login', 'cadastro'); limparCamposAoIrParaCadastro()">Não possui cadastro?</a>
                 </div>
             </div>
         </form>
@@ -93,99 +93,21 @@
     </div>
     <!-- HOME-TRABALHADOR -->
     <div id="home-trabalhador" class="d-none">
-        <div class="home-vaga">
+        <div class="home-vaga" class="container">
             <div class="border-detalhe">
                 <div class="recrutador-titulo">
                     <h1>VAGAS</h1>
                 </div>
-
-                <div class="home-info">
-                    <div class="left-info">
-                        <h2>Título:</h2>
-                        <p>&nbsp;Desenvolvedor Full-Stack</p>
-                    </div>
-                    <div class="right-info">
-                        <h2>Remuneração:</h2>
-                        <p>&nbsp;R$ 5.500,00</p>
-                    </div>
+                <div class="lista-vagas" id="lista-vagas-trabalhador">
                 </div>
-
-                <div class="home-info">
-                    <div class="left-info">
-                        <h2>Título:</h2>
-                        <p>&nbsp;Analista de Testes</p>
-                    </div>
-                    <div class="right-info">
-                        <h2>Remuneração:</h2>
-                        <p>&nbsp;R$ 3.200,00</p>
-                    </div>
-                </div>
-
-                <div class="home-info">
-                    <div class="left-info">
-                        <h2>Título:</h2>
-                        <p>&nbsp;Desenvolvedor Java Sênior</p>
-                    </div>
-                    <div class="right-info">
-                        <h2>Remuneração:</h2>
-                        <p>&nbsp;R$ 9.000,00</p>
-                    </div>
-                </div>
-
-                <div class="home-info">
-                    <div class="left-info">
-                        <h2>Título:</h2>
-                        <p>&nbsp;Desenvolvedor Frontend Júnior</p>
-                    </div>
-                    <div class="right-info">
-                        <h2>Remuneração:</h2>
-                        <p>&nbsp;R$ 2.000,00</p>
-                    </div>
-                </div>
-
-                <div class="home-info">
-                    <div class="left-info">
-                        <h2>Título:</h2>
-                        <p>&nbsp;Desenvolvedor Full-Stack Sênior</p>
-                    </div>
-                    <div class="right-info">
-                        <h2>Remuneração:</h2>
-                        <p>&nbsp;R$ 8.500,00</p>
-                    </div>
-                </div>
-
-                <div class="home-info">
-                    <div class="left-info">
-                        <h2>Título:</h2>
-                        <p>&nbsp;Analista de Sistemas</p>
-                    </div>
-                    <div class="right-info">
-                        <h2>Remuneração:</h2>
-                        <p>&nbsp;R$ 3.000,00</p>
-                    </div>
-                </div>
-
-                <div class="home-info">
-                    <div class="left-info">
-                        <h2>Título:</h2>
-                        <p>&nbsp;Project Manager</p>
-                    </div>
-                    <div class="right-info">
-                        <h2>Remuneração:</h2>
-                        <p>&nbsp;R$ 4.500,00</p>
-                    </div>
-                </div>
-
                 <div class="buttons-recrutador1">
                     <div>
-                        <button class="button2">Sair</button>
+                        <button onclick="irPara('home-trabalhador', 'login')" class="button2">Sair</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
-
     <!-- HOME-RECRUTADOR -->
     <div id="home-recrutador" class="d-none">
         <div class="home-vaga" class="container">
@@ -193,87 +115,11 @@
                 <div class="recrutador-titulo">
                     <h1>VAGAS</h1>
                 </div>
-
-                <div class="home-info">
-                    <div class="left-info">
-                        <h2>Título:</h2>
-                        <p>&nbsp;Desenvolvedor Full-Stack</p>
-                    </div>
-                    <div class="right-info">
-                        <h2>Remuneração:</h2>
-                        <p>&nbsp;R$ 5.500,00</p>
-                    </div>
+                <div class="lista-vagas" id="lista-vagas-recrutador">
                 </div>
-
-                <div class="home-info">
-                    <div class="left-info">
-                        <h2>Título:</h2>
-                        <p>&nbsp;Analista de Testes</p>
-                    </div>
-                    <div class="right-info">
-                        <h2>Remuneração:</h2>
-                        <p>&nbsp;R$ 3.200,00</p>
-                    </div>
-                </div>
-
-                <div class="home-info">
-                    <div class="left-info">
-                        <h2>Título:</h2>
-                        <p>&nbsp;Desenvolvedor Java Sênior</p>
-                    </div>
-                    <div class="right-info">
-                        <h2>Remuneração:</h2>
-                        <p>&nbsp;R$ 9.000,00</p>
-                    </div>
-                </div>
-
-                <div class="home-info">
-                    <div class="left-info">
-                        <h2>Título:</h2>
-                        <p>&nbsp;Desenvolvedor Frontend Júnior</p>
-                    </div>
-                    <div class="right-info">
-                        <h2>Remuneração:</h2>
-                        <p>&nbsp;R$ 2.000,00</p>
-                    </div>
-                </div>
-
-                <div class="home-info">
-                    <div class="left-info">
-                        <h2>Título:</h2>
-                        <p>&nbsp;Desenvolvedor Full-Stack Sênior</p>
-                    </div>
-                    <div class="right-info">
-                        <h2>Remuneração:</h2>
-                        <p>&nbsp;R$ 8.500,00</p>
-                    </div>
-                </div>
-
-                <div class="home-info">
-                    <div class="left-info">
-                        <h2>Título:</h2>
-                        <p>&nbsp;Analista de Sistemas</p>
-                    </div>
-                    <div class="right-info">
-                        <h2>Remuneração:</h2>
-                        <p>&nbsp;R$ 3.000,00</p>
-                    </div>
-                </div>
-
-                <div class="home-info">
-                    <div class="left-info">
-                        <h2>Título:</h2>
-                        <p>&nbsp;Project Manager</p>
-                    </div>
-                    <div class="right-info">
-                        <h2>Remuneração:</h2>
-                        <p>&nbsp;R$ 4.500,00</p>
-                    </div>
-                </div>
-
                 <div class="buttons-recrutador">
                     <div>
-                        <button>Sair</button>
+                        <button onclick="irPara('home-recrutador', 'login')">Sair</button>
                     </div>
                     <div>
                         <button class="button1">Cadastrar Vaga</button>

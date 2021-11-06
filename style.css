@@ -187,6 +187,7 @@ select {
     flex-direction: row;
     box-sizing: border-box;
     padding: 20px;
+    margin-top:20px;
 }
 
 .home-info:hover {
@@ -212,8 +213,8 @@ select {
 }
 
 .buttons-recrutador1 {
+    margin-top:20px;
     display: flex;
-    
 }
 
 .buttons-recrutador1 button:hover {
@@ -253,7 +254,6 @@ select {
 .border-detalhe {
     border: 1px solid black;
     border-radius: 7px;
-    height: 700px;
     width: 800px;
     overflow: hidden;
     box-sizing: border-box;
@@ -261,6 +261,14 @@ select {
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
+}
+
+.lista-vagas{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .recrutador-titulo {
@@ -355,6 +363,7 @@ select {
     display: flex;
     justify-content: space-between;
     width: 650px;
+    margin-top:20px;
 }
 
 .buttons-recrutador button {

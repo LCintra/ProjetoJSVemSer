@@ -235,7 +235,15 @@ const resetarCampos = (...campos) => {
     campos.forEach(c => c.value = '');
 }
 
-//limpar campos ao clicar em voltar
+//limpar campos ao clicar pra ir pra tela de cadastro
+
+const limparCamposAoIrParaCadastro = () =>{
+    let emailInput = document.getElementById('email-input-login')
+    let senhaInput = document.getElementById('password-input-login')
+    resetarCampos(emailInput,senhaInput)
+}
+
+//limpar campos ao clicar em voltar da tela de cadastro
 
 const limparCamposAoVoltar = () =>{
     let nomeInput = document.getElementById('name-input-registration');
@@ -271,11 +279,13 @@ const validarLogin = () => {
                 usuarioListado = response.data.find(colaborador => colaborador.email === emailDigitado && colaborador.senha === senhaDigitada)
                 if(usuarioListado.tipo == 'trabalhador'){
                     irPara('login', 'home-trabalhador');
+                    mostrarListaDeVagas('trabalhador')
                 } else{
                     irPara('login', 'home-recrutador')
+                    mostrarListaDeVagas('recrutador')
                 }
             }
-            console.log(response)
+            
         })
         .catch(error => console.error(error));
 }
@@ -298,6 +308,57 @@ const esqueceuASenha = () =>{
 
 //função para mostrar a lista de vagas
 
-const mostrarListaDeVagas = () =>{
+const mostrarListaDeVagas = (tipo) =>{
+    let listaDeVagas
+    if(tipo=='recrutador'){
+        listaDeVagas = document.getElementById('lista-vagas-recrutador')
+    } else{
+        listaDeVagas = document.getElementById('lista-vagas-trabalhador')
+    }
+    listaDeVagas.innerHTML = ''
+    axios.get('http://localhost:3000/vagas')
+    .then(response =>{
+        response.data.forEach(response =>{
+            let homeInfo = document.createElement('div')
+            homeInfo.setAttribute('class','home-info')
+            
 
+            let leftInfo = document.createElement('div')
+            leftInfo.setAttribute('class','left-info')
+
+            let rightInfo = document.createElement('div')
+            rightInfo.setAttribute('class','right-info')
+
+            let h2Titulo = document.createElement('h2')
+
+            let tituloContent = document.createElement('p')
+
+            let h2Remuneracao = document.createElement('h2')
+
+            let remuneracaoContent = document.createElement('p')
+
+            let tituloText = document.createTextNode(response.titulo)
+
+            let remuneracaoText = document.createTextNode(response.remuneracao)
+            
+            let tituloDefaultText = document.createTextNode('Título:')
+
+            let remuneracaoDefaultText = document.createTextNode('Remuneração:')
+
+            h2Titulo.appendChild(tituloDefaultText)
+            tituloContent.appendChild(tituloText)
+            leftInfo.appendChild(h2Titulo)
+            leftInfo.appendChild(tituloContent)
+
+            h2Remuneracao.appendChild(remuneracaoDefaultText)
+            remuneracaoContent.appendChild(remuneracaoText)
+            rightInfo.appendChild(h2Remuneracao)
+            rightInfo.appendChild(remuneracaoContent)
+
+            homeInfo.appendChild(leftInfo)
+            homeInfo.appendChild(rightInfo)
+
+            listaDeVagas.appendChild(homeInfo)
+        })
+    })
 }
