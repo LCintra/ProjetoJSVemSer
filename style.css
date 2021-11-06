@@ -151,6 +151,7 @@ select {
     display: flex;
     justify-content: space-between;
     width: 650px;
+    margin-top:20px;
 }
 .buttons-cadastro button {
     width: 150px;
@@ -390,3 +391,26 @@ select {
     color: white;
 }
 
+.input-descricao {
+    width: 650px;
+    padding-bottom:50px;
+    word-wrap: break-word;
+}
+.recrutador-vaga {
+    width: 650px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    border-radius: 7px;
+    box-sizing: border-box;
+    padding-top:30px;
+}
+
+.recrutador-vaga label{
+    padding-bottom:15px;
+}
+
+textarea{
+    width: 650px;
+}
