@@ -1,11 +1,22 @@
 {
   "usuarios": [
     {
+      "tipo": "trabalhador",
       "nome": "Trabalhador Teste",
       "email": "a",
       "senha": "a",
       "data": "12/11/2002",
       "id": 0,
+      "primeiroEmprego": true,
+      "candidaturas": []
+    },
+    {
+      "tipo": "recrutador",
+      "nome": "Trabalhador Teste2",
+      "email": "b",
+      "senha": "b",
+      "data": "12/11/2002",
+      "id": -1,
       "primeiroEmprego": true,
       "candidaturas": []
     },
