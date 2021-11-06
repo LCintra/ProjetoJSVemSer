@@ -9,7 +9,8 @@ body {
     align-items: center;
     justify-content: center;
     width: 100%;
-    gap: 50px
+    gap: 50px;
+    font-family: 'Roboto', sans-serif;
 }
 
 .d-none{
@@ -32,9 +33,6 @@ display:flex;
 #login {
     font-family: 'Roboto', sans-serif;
     margin-top: 15%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 #login .border {
@@ -70,6 +68,7 @@ display:flex;
     display: flex;
     width: 200px;
     height: 25px;
+    margin-top: 3px;
 }
 
 #login #login-button {
@@ -81,7 +80,17 @@ display:flex;
     color: white;
     background-color: #2C2C2C;
     border-radius: 7px;
-    outline: 0;
+    border: none;
+    cursor: pointer;
+    transition: 0.7s;
+}
+
+#login-button:hover {
+    transform: scale(1.1); 
+}
+
+#login-button:active {
+    transform: scale(0.8); 
 }
 
 #login .low-border {
@@ -106,7 +115,6 @@ display:flex;
 .cadastro {
     width: 100%;
     max-width: 1200px;
-    font-family: 'Roboto', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;

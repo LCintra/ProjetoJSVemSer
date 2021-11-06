@@ -18,12 +18,22 @@
       "primeiroEmprego": false,
       "candidaturas": [],
       "id": 2
+    },
+    {
+      "tipo": "recrutador",
+      "nome": "Carla",
+      "dataNascimento": "12/11/2002",
+      "email": "teste@gmail.com",
+      "senha": "123232@#!@Ddsad",
+      "primeiroEmprego": true,
+      "candidaturas": [],
+      "id": 3
     }
   ],
-  "vagas":[
+  "vagas": [
     {
-      "id":"0",
-      "titulo":"Vaga teste"
+      "id": "0",
+      "titulo": "Vaga teste"
     }
   ]
 }

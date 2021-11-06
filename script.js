@@ -61,12 +61,12 @@ const irPara = (origem, destino) => {
 //#region Validação input tipo
 
 const validarTipoUsuario = () =>{
-    let tipoSelectValue = document.getElementById('type-select-registration').value
-    let primeiroEmpregoInput = document.getElementById('first-job-input-registration')
-    if(tipoSelectValue == 'Trabalhador'){
-        primeiroEmpregoInput.className = primeiroEmpregoInput.className.replace('d-none','d-flex')
+    let tipoSelectValue = document.getElementById('type-input-registration').value
+    let primeiroEmpregoInput = document.getElementById('first-job-div')
+    if(tipoSelectValue === 'q1'){
+        primeiroEmpregoInput.className = primeiroEmpregoInput.className.replace('d-none','checkbox')
     } else {
-        primeiroEmpregoInput.className = primeiroEmpregoInput.className.replace('d-flex','d-none')
+        primeiroEmpregoInput.className = primeiroEmpregoInput.className.replace('checkbox','d-none')
     }
 }
 
@@ -201,13 +201,25 @@ const validarCadastro = () => {
 }
 
 //Função para adicionar usuário
-const cadastrarUsuário = () => {
-    let nomeInput = document.getElementById('name-input-registration')
-    let dataInput = document.getElementById('date-input-registration');
-    let emailInput = document.getElementById('email-input-registration');
-    let senhaInput = document.getElementById('password-input-registration');
-    let tipoInput = document.getElementById('type-input-registration')
-    let primeiroEmpregoInput = document.getElementById('first-job-input-registration')
+const cadastrarUsuario = () => {
+    let nomeInput = document.getElementById('name-input-registration').value
+    let dataInput = document.getElementById('date-input-registration').value;
+    let emailInput = document.getElementById('email-input-registration').value;
+    let senhaInput = document.getElementById('password-input-registration').value;
+    let tipoInput = document.getElementById('type-input-registration').value
+    let primeiroEmpregoInput = document.getElementById('first-job-input-registration').value
+
+    if(tipoInput=='q1'){
+        tipoInput = 'trabalhador'
+    } else {
+        tipoInput = 'recrutador'
+    }
+
+    if(primeiroEmpregoInput == 'on'){
+        primeiroEmpregoInput = true
+    } else {
+        primeiroEmpregoInput = false
+    }
     const novoUsuario = new Usuario(tipoInput,nomeInput,dataInput,emailInput,senhaInput,primeiroEmpregoInput,[])
     axios.post('http://localhost:3000/usuarios',novoUsuario)
     .then(response =>{
@@ -233,11 +245,32 @@ const validarLogin = () => {
             let podeLogar = response.data.some(c => c.email === emailDigitado && c.senha === senhaDigitada);
 
             if(podeLogar) {
-                irPara('login', 'home');
+                usuarioListado = response.data.find(colaborador => colaborador.email === emailDigitado && colaborador.senha === senhaDigitada)
+                if(usuarioListado.tipo == 'trabalhador'){
+                    irPara('login', 'home-trabalhador');
+                } else{
+                    irPara('login', 'home-recrutador')
+                }
             }
             console.log(response)
         })
         .catch(error => console.error(error));
+}
+
+//esqueceu a senha
+
+const esqueceuASenha = () =>{
+    let emailInserido = prompt('Qual o seu e-mail?')
+    axios.get('http://localhost:3000/usuarios')
+    .then(response => {
+        let emailExiste = response.data.some(colaborador => colaborador.email == emailInserido)
+        if(emailExiste){
+            let colaborador = response.data.find(colaborador => colaborador.email == emailInserido)
+             alert(`Sua senha é ${colaborador.senha}`)
+        } else {
+            alert('Não há nenhum usuário cadastrado com esse e-mail!')
+        }
+    })
 }
 
 //função para mostrar a lista de vagas

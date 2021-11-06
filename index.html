@@ -7,10 +7,11 @@
     <title>Document</title>
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="scroll_bar.css">
 </head>
 <body>
     <!-- LOGIN -->
-    <div id="login" class="container">
+    <div id="login" class="d-flex container">
         <form>
             <div>
                 <div class="border">
@@ -33,14 +34,14 @@
                     </div>
                 </div>
                 <div class="low-border">
-                    <a href="#">Esqueceu a senha?</a>
-                    <a href="#">Não possui cadastro?</a>
+                    <a onclick="esqueceuASenha()">Esqueceu a senha?</a>
+                    <a onclick="irPara('login', 'cadastro')">Não possui cadastro?</a>
                 </div>
             </div>
         </form>
     </div>
     <!-- CADASTRO -->
-    <div id="cadastro">
+    <div id="cadastro" class="d-none">
         <div class="cadastro" class="container">
             <div class="border-detalhe">
                 <div class="cadastro-text">
@@ -48,40 +49,39 @@
                 </div class="cadastro-form">
                 <form action="cadastro">
                     <label for="user">Tipo de Usuário</label>
-                    <select required name="user" id="user">
+                    <select onchange="validarTipoUsuario()" id="type-input-registration" name="user" id="user">
                         <option value="q1">Trabalhador</option>
                         <option value="q2">Recrutador</option>
                     </select>
                     <label for="name">Nome Completo*</label>
-                    <input class="input" type="text" required>
+                    <input id="name-input-registration" onkeyup="validarNome()" class="input" type="text">
                     <span id="name-registration-error" class="d-none">Nome inválido</span>
 
                     <label for="date">Data de Nascimento*</label>
-                    <input class="input" type="text" required>
+                    <input id="date-input-registration" class="input" type="text" onkeyup="validarData()">
                     <span id="date-registration-error" class="d-none">Data inválida</span>
 
                     <label for="email">Email*</label>
-                    <input class="input" type="email" name="email" id="email" required>
+                    <input class="input" type="email" name="email" id="email-input-registration" onkeyup="validarEmail()">
                     <span id="email-registration-error" class="d-none">Email inválido</span>
 
                     <label for="password">Senha*</label>
-                    <input class="input" type="password" required>
+                    <input id="password-input-registration" class="input" type="password" onkeyup="validarSenha()">
                     <span id="password-registration-error" class="d-none">Senha inválida</span>
                     
-                    <div class="checkbox">
-                    <input type="checkbox">
+                    <div class="checkbox" id="first-job-div">
+                    <input id="first-job-input-registration" type="checkbox">
                     <label>Primeiro Emprego?</label>
                     </div>
-                    
-                    <div class="buttons-cadastro">
-                        <div>
-                            <button>Voltar</button>
-                        </div>
-                        <div>
-                            <button class="button1">Cadastrar</button>
-                        </div>
-                    </div>
                 </form>
+                <div class="buttons-cadastro">
+                    <div>
+                        <button onclick="irPara('cadastro', 'login')">Voltar</button>
+                    </div>
+                    <div>
+                        <button onclick="validarCadastro()" class="button1">Cadastrar</button>
+                    </div>
+                </div>
                 <div>
 
                 </div>
@@ -89,7 +89,7 @@
         </div>
     </div>
     <!-- HOME-TRABALHADOR -->
-    <div class="">
+    <div id="home-trabalhador" class="d-none">
         <div class="home-vaga" class="container">
             <div class="border-detalhe">
                 <div class="recrutador-titulo">
@@ -178,12 +178,13 @@
                             <button class="button1">Sair</button>
                         </div>
                     </div>
-               
-
+                    </div>
+            </div>
+        </div>
     </div>
 
  <!-- HOME-RECRUTADOR -->
- <div class="">
+ <div id="home-recrutador" class="d-none">
     <div class="home-vaga" class="container">
         <div class="border-detalhe">
             <div class="recrutador-titulo">
@@ -275,12 +276,12 @@
                         <button class="button1">Cadastrar Vaga</button>
                     </div>
                 </div>
-           
-
+                </div>
+      </div>     
+</div>
 </div>
     <!-- DETALHE DE VAGA RECRUTADOR -->
-
-    <div class="">
+    <div id="detalhe-de-vaga-recrutador" class="d-none">
         <div class="detalhe-de-vaga" class="container">
             <div class="border-detalhe">
                 <div class="recrutador-titulo">
@@ -349,7 +350,7 @@
 
     <!-- DETALHE DE VAGA TRABALHADOR 1 -->
 
-    <div class="">
+    <div id="detalhe-de-vaga-trabalhador-1" class="d-none">
         <div class="detalhe-de-vaga">
             <div class="border-detalhe">
                 <div class="recrutador-titulo">
@@ -421,7 +422,7 @@
 
     <!-- DETALHE DE VAGA TRABALHADOR 2 -->
 
-    <div class="">
+    <div id="detalhe-de-vaga-trabalhador-2" class="d-none">
         <div class="detalhe-de-vaga">
             <div class="border-detalhe">
                 <div class="recrutador-titulo">
@@ -493,7 +494,7 @@
     
     <!-- DETALHE DE VAGA TRABALHADOR 3 -->
 
-    <div class="">
+    <div id="detalhe-de-vaga-trabalhador-3" class="d-none">
         <div class="detalhe-de-vaga">
             <div class="border-detalhe">
                 <div class="recrutador-titulo">
@@ -564,5 +565,6 @@
     </div>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
     <script src="./script.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js" type="text/javascript"></script>
 </body>
 </html>
