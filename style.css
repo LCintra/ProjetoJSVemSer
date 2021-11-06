@@ -330,3 +330,18 @@ select {
     background-color: #2C2C2C;
     color: white;
 }
+
+.home-info{
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-between; 
+    padding:10px
+}
+
+.left-info{
+    display: flex;
+}
+
+.right-info{
+    display: flex;
+}
