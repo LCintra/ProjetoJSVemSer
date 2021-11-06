@@ -49,17 +49,24 @@
                 <form action="cadastro">
                     <label for="user">Tipo de Usuário</label>
                     <select required name="user" id="user">
-                        <option value="q1"></option>
-                        <option value="q2"></option>
+                        <option value="q1">Trabalhador</option>
+                        <option value="q2">Recrutador</option>
                     </select>
                     <label for="name">Nome Completo*</label>
                     <input type="text" required>
+                    <span id="name-registration-error" class="d-none">Nome inválido</span>
+
                     <label for="date">Data de Nascimento*</label>
                     <input type="text" required>
+                    <span id="date-registration-error" class="d-none">Data inválida</span>
+
                     <label for="email">Email*</label>
                     <input type="email" name="email" id="email" required>
+                    <span id="email-registration-error" class="d-none">Email inválido</span>
+
                     <label for="password">Senha*</label>
                     <input type="password" required>
+                    <span id="password-registration-error" class="d-none">Senha inválida</span>
                     
                     <input type="checkbox" class="checkbox">
                     <label>Primeiro Emprego?</label>
