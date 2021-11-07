@@ -597,6 +597,8 @@ const candidatarTrabalhador = () =>{
             
             usuario.candidaturas.push(vaga.id)
             vaga.candidatos.push(usuario.id)
+            console.log(vaga.candidatos)
+            console.log(usuario.id)
 
             axios.post('http://localhost:3000/candidaturas',candidatura)
 
