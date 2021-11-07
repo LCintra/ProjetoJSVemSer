@@ -472,6 +472,8 @@ const carregarDescricaoVagaTrabalhador = (e) =>{
     let tituloVaga = document.getElementById('vaga-trabalhador-titulo')
     let descricaoVaga = document.getElementById('vaga-trabalhador-descricao')
     let remuneracaoVaga = document.getElementById('vaga-trabalhador-remuneracao')
+    let tabelaTrabalhadores = document.getElementById('table-trabalhadores-cadastrados')
+    tabelaTrabalhadores.innerHTML = ''
     tituloVaga.innerHTML = ''
     descricaoVaga.innerHTML = ''
     remuneracaoVaga.innerHTML = ''
@@ -487,8 +489,8 @@ const carregarDescricaoVagaTrabalhador = (e) =>{
         remuneracaoVaga.appendChild(document.createTextNode(response.data.remuneracao))
         
         axios.get(`http://localhost:3000/usuarios`)
-        .then(response =>{
-            let usuario = response.data.find(usuario => usuario.email == emailDigitado && usuario.senha == senhaDigitada)
+        .then(responseUsuarios =>{
+            let usuario = responseUsuarios.data.find(usuario => usuario.email == emailDigitado && usuario.senha == senhaDigitada)
             axios.get(`http://localhost:3000/candidaturas`)
             .then(response =>{
                 let candidaturas = response.data
@@ -506,6 +508,23 @@ const carregarDescricaoVagaTrabalhador = (e) =>{
                 }
                 botaoCadastrar.appendChild(buttonText)
                 divBotao.appendChild(botaoCadastrar)
+
+                //mostrar as pessoas que estão trabalhando no projeto dinamicamente
+                vaga.candidatos.map(idCandidato => {
+                       let candidato = responseUsuarios.data.find(candidato => candidato.id == idCandidato)
+                       let novaTr = document.createElement('tr')
+                       let novaTd1 = document.createElement('td')
+                       let novaTd2 = document.createElement('td')
+                       let novaTd3 = document.createElement('td')
+                       let nomeCandidato = document.createTextNode(candidato.nome)
+                       let dataNascimento = document.createTextNode(candidato.dataNascimento)
+                       novaTd1.appendChild(nomeCandidato)
+                       novaTd2.appendChild(dataNascimento)
+                       novaTr.appendChild(novaTd1)
+                       novaTr.appendChild(novaTd3)
+                       novaTr.appendChild(novaTd2)
+                       tabelaTrabalhadores.appendChild(novaTr) 
+                })
             })
         })
     })

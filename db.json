@@ -5,9 +5,11 @@
       "nome": "Trabalhador Teste",
       "email": "a",
       "senha": "a",
+      "dataNascimento": "22/11/2002",
       "primeiroEmprego": true,
       "candidaturas": [
-        2
+        2,
+        3
       ],
       "id": 0
     },
@@ -28,7 +30,10 @@
       "email": "teste@gmail,com",
       "senha": "senha321",
       "primeiroEmprego": false,
-      "candidaturas": [],
+      "candidaturas": [
+        2,
+        3
+      ],
       "id": 2
     },
     {
@@ -55,7 +60,8 @@
       "descricao": "dasdad",
       "remuneracao": "R$ 2000",
       "candidatos": [
-        0
+        0,
+        2
       ],
       "id": 2
     },
@@ -63,7 +69,10 @@
       "titulo": "Vaga 3",
       "descricao": "dasdsa",
       "remuneracao": "R$ 4000",
-      "candidatos": [],
+      "candidatos": [
+        0,
+        2
+      ],
       "id": 3
     }
   ],
@@ -73,6 +82,24 @@
       "idCandidato": 0,
       "reprovado": false,
       "id": 1
+    },
+    {
+      "idVaga": 2,
+      "idCandidato": 2,
+      "reprovado": false,
+      "id": 2
+    },
+    {
+      "idVaga": 3,
+      "idCandidato": 0,
+      "reprovado": false,
+      "id": 4
+    },
+    {
+      "idVaga": 3,
+      "idCandidato": 2,
+      "reprovado": false,
+      "id": 5
     }
   ]
 }
