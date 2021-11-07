@@ -35,11 +35,12 @@ class Candidatura{
 class Vaga{
     id;
     titulo;
+    descricao;
     remuneracao;
     candidatos;
-    constructor(id,titulo,remuneracao,candidatos){
-        this.id = id;
+    constructor(titulo,remuneracao,descricao,candidatos){
         this.titulo = titulo;
+        this.descricao = descricao;
         this.remuneracao = this.formataRemuneracao(remuneracao);
         this.candidatos = candidatos;
     }
@@ -344,7 +345,7 @@ const mostrarListaDeVagas = (tipo) =>{
 
             let tituloText = document.createTextNode(response.titulo)
 
-            let remuneracaoText = document.createTextNode(`R$ ${response.remuneracao}`)
+            let remuneracaoText = document.createTextNode(`${response.remuneracao}`)
             
             let tituloDefaultText = document.createTextNode('Título:')
 
@@ -368,15 +369,12 @@ const mostrarListaDeVagas = (tipo) =>{
     })
 }
 
-// CADASTRO DE VAGAS
-function validaCampos(title, descricao, salary) {    
-    let erroSalary = document.getElementById('job-salary-number-registration-error')
-    let erroSalary2 = document.getElementById('job-salary-registration-error')
+//Validação Título
 
-    let erroTitle = document.getElementById('job-title-registration-error')
-    let erroDescricao = document.getElementById('job-description-registration-error')
-
+const validaTitulo = () =>{
     let valid = true
+    const title = document.querySelector('#job-title-input').value
+    let erroTitle = document.getElementById('job-title-registration-error')
 
     if(title === '') {
         erroTitle.classList.remove('d-none')
@@ -387,6 +385,14 @@ function validaCampos(title, descricao, salary) {
     } else {
         erroTitle.classList.add('d-none')
     }
+    return valid
+}
+
+const validaDescricao = () =>{
+    let valid = true
+
+    let erroDescricao = document.getElementById('job-description-registration-error')
+    const descricao = document.querySelector('#job-description-input').value
 
     if(descricao === '') {
         erroDescricao.classList.remove('d-none')
@@ -398,6 +404,15 @@ function validaCampos(title, descricao, salary) {
         erroDescricao.classList.add('d-none')
     }
 
+    return valid
+}
+
+const validaRemuneracao = () =>{
+    let valid = true
+
+    let erroSalary = document.getElementById('job-salary-number-registration-error')
+    let erroSalary2 = document.getElementById('job-salary-registration-error')
+    const salary = document.querySelector('#job-salary-input').value
 
     if(salary === '') {
         erroSalary2.classList.remove('d-none')
@@ -418,28 +433,32 @@ function validaCampos(title, descricao, salary) {
     }
 
     return valid
+}
 
+// CADASTRO DE VAGAS
+function validaCampos() {
+    if(validaTitulo() && validaRemuneracao && validaDescricao){
+        return true
+    } else{
+        return false
+    }
 }
 
 const buttonVaga = document.getElementById('cadastrar-nova-vaga')
 
 async function CadastrarVaga() {
     const title = document.querySelector('#job-title-input').value
-    const descricao = document.querySelector('#job-description-input').value
     const salary = document.querySelector('#job-salary-input').value
-
-    const valid = validaCampos(title,descricao,salary)
+    const descricao = document.querySelector('#job-description-input').value
+    const valid = validaCampos()
 
     if(!valid) return;
 
-    const vagas = await axios.get('http://localhost:3000/vagas')
+    vagaASerInserida = new Vaga(title,salary,descricao,[])
 
-    const newVaga = await axios.post('http://localhost:3000/vagas', {
-        id: vagas.data.length,
-        titulo: title,
-        descricao: descricao,
-        remuneracao: salary
-    })
+    const newVaga = await axios.post('http://localhost:3000/vagas', vagaASerInserida)
+    
+    vagaASerInserida.id = newVaga.data.id
 
     if(newVaga.status === 200){
         limparCamposAoVoltar()

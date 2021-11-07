@@ -100,17 +100,17 @@
                 </div>
                 <div class="recrutador-vaga">
                     <label for="job-title-input">Título: *</label>
-                    <input id="job-title-input" value='' class="input" type="text">
+                    <input onkeyup="validaTitulo()" id="job-title-input" value='' class="input" type="text">
                     <span id="job-title-registration-error" class="d-none">Por favor preencha o campo</span>
                 </div>
                 <div class="recrutador-vaga">
                     <label for="job-description-input">Descrição: *</label>
-                    <textarea id="job-description-input" cols="10" rows="5"></textarea>
+                    <textarea onkeyup="validaDescricao()" id="job-description-input" cols="10" rows="5"></textarea>
                     <span id="job-description-registration-error" class="d-none">Por favor preencha o campo</span>
                 </div>
                 <div class="recrutador-vaga">
                     <label for="job-salary-input">Remuneração: *</label>
-                    <input id="job-salary-input" class="input" type="text">
+                    <input onkeyup="validaRemuneracao()" id="job-salary-input" class="input" type="text">
                     <span id="job-salary-number-registration-error" class="d-none">Coloque apenas números</span>
                     <span id="job-salary-registration-error" class="d-none">Por favor preencha o campo</span>
                 </div>
