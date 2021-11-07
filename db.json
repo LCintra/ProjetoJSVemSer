@@ -45,6 +45,18 @@
       "primeiroEmprego": true,
       "candidaturas": [],
       "id": 3
+    },
+    {
+      "tipo": "trabalhador",
+      "nome": "Ricardo",
+      "dataNascimento": "11/04/1994",
+      "email": "batatinha@gmail.com",
+      "senha": "De2#lpoi",
+      "primeiroEmprego": true,
+      "candidaturas": [
+        2
+      ],
+      "id": 4
     }
   ],
   "vagas": [
@@ -61,7 +73,8 @@
       "remuneracao": "R$ 2000",
       "candidatos": [
         0,
-        2
+        2,
+        4
       ],
       "id": 2
     },
@@ -100,6 +113,12 @@
       "idCandidato": 2,
       "reprovado": false,
       "id": 5
+    },
+    {
+      "idVaga": 2,
+      "idCandidato": 4,
+      "reprovado": false,
+      "id": 6
     }
   ]
 }

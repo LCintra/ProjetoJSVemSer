@@ -326,8 +326,11 @@ const mostrarListaDeVagas = (tipo) =>{
             var homeInfo = document.createElement('div')
             homeInfo.setAttribute('class','home-info')
             homeInfo.setAttribute('id',response.id)
-            homeInfo.addEventListener('click',carregarDescricaoVagaTrabalhador)
-
+            if(tipo=='recrutador'){
+                homeInfo.addEventListener('click',carregarDescricaoVagaRecrutador)
+            } else{
+                homeInfo.addEventListener('click',carregarDescricaoVagaTrabalhador)
+            }
             let leftInfo = document.createElement('div')
             leftInfo.setAttribute('class','left-info')
 
@@ -514,6 +517,11 @@ const carregarDescricaoVagaTrabalhador = (e) =>{
                        let candidato = responseUsuarios.data.find(candidato => candidato.id == idCandidato)
                        let novaTr = document.createElement('tr')
                        let novaTd1 = document.createElement('td')
+                       //se for o usuário logado
+                       let usuario = responseUsuarios.data.find(usuario => usuario.email == emailDigitado && usuario.senha == senhaDigitada)
+                       if(idCandidato == usuario.id){
+                           novaTd1.className = 'text-danger'
+                       }
                        let novaTd2 = document.createElement('td')
                        let novaTd3 = document.createElement('td')
                        let nomeCandidato = document.createTextNode(candidato.nome)
@@ -528,6 +536,13 @@ const carregarDescricaoVagaTrabalhador = (e) =>{
             })
         })
     })
+}
+
+//função para carregar a descrição da vaga - recrutador
+
+const carregarDescricaoVagaRecrutador = (e) =>{
+    irPara('home-recrutador','detalhe-de-vaga-recrutador')
+    idVagaClicado = e.target.id
 }
 
 //função de candidatar trabalhador
@@ -553,6 +568,8 @@ const candidatarTrabalhador = () =>{
         })
     })
 }
+
+//descandidatar trabalhador
 
 const descandidatarTrabalhador = () =>{
     axios.get('http://localhost:3000/usuarios')
