@@ -36,7 +36,7 @@ display:flex;
 }
 
 #login .border {
-    border: 1px solid black;
+    border: 1px solid gray;
     border-radius: 7px;
     height: 300px;
     width: 600px;
@@ -119,7 +119,13 @@ display:flex;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 20%;
 }
+
+.cadastro-vagas {
+    margin-top: 15%;
+}
+
 .cadastro-text {
     width: 100%;
     background-color: #353A40;
@@ -181,7 +187,7 @@ select {
 /* Home */
 .home-info {
     width: 650px;
-    border: 1px solid black;
+    border: 1px solid gray;
     border-radius: 7px;
     display: flex;
     justify-content: space-between;
@@ -250,10 +256,11 @@ select {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 20%;
 }
 
 .border-detalhe {
-    border: 1px solid black;
+    border: 1px solid gray;
     border-radius: 7px;
     width: 800px;
     overflow: hidden;
@@ -287,7 +294,7 @@ select {
     padding: 25px;
     gap: 10px;
     width: 650px;
-    border: 1px solid black;
+    border: 1px solid gray;
     border-radius: 7px;
     display: flex;
     justify-content: center;
@@ -419,4 +426,8 @@ textarea{
 
 .home-info *{
     pointer-events: none
+}
+
+.cadastro-de-vagas {
+    margin-top: 25%;
 }
