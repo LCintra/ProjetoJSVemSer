@@ -244,16 +244,14 @@
                 <div class="recrutador-info">
                     <div>
                         <h2>Título:</h2>
-                        <p>&nbsp;Desenvolvedor Full-Stack</p>
+                        <p id="vaga-trabalhador-titulo"></p>
                     </div>
                     <div>
-                        <p><span>Descrição:</span>&nbsp;Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed
-                            alias, quas fugit, voluptate earum esse facilis modi, vel distinctio odit quibusdam amet
-                            quod sapiente doloremque adipisci vero ipsum praesentium sequi.</p>
+                        <p><span class="description">Descrição:</span><span id="vaga-trabalhador-descricao"></span></p>
                     </div>
                     <div>
                         <h2>Remuneração:</h2>
-                        <p>&nbsp;R$ 5.500,00</p>
+                        <p id="vaga-trabalhador-remuneracao"></p>
                     </div>
                 </div>
                 <div class="candidatos-recrutador">
@@ -294,10 +292,10 @@
                 </div>
                 <div class="buttons-recrutador">
                     <div>
-                        <button>Voltar</button>
+                        <button onclick="irPara('detalhe-de-vaga-trabalhador-1','home-trabalhador')">Voltar</button>
                     </div>
                     <div>
-                        <button class="button1" style="width: 200px">Cancelar Candidatura</button>
+                        <button onclick="candidatarTrabalhador()" class="button1" style="width: 200px">Candidatar-se</button>
                     </div>
                 </div>
             </div>

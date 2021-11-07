@@ -1,5 +1,4 @@
 // const axios = require('axios').default;
-
 //Criando as Classes
 class Usuario {
     id;
@@ -228,7 +227,6 @@ const cadastrarUsuario = () => {
     .then(response =>{
         novoUsuario.id = response.data.id
         resetarCampos(nomeInput,dataInput,emailInput,senhaInput,tipoInput,primeiroEmpregoInput)
-        console.log(novoUsuario)
     })
 }
 
@@ -273,14 +271,14 @@ const limparCamposAoVoltar = () =>{
 }
 
 //Função para validar o login
+var emailDigitado
+var senhaDigitada
 const validarLogin = () => {
     axios.get('http://localhost:3000/usuarios')
         .then(response => {
-            let emailDigitado = document.getElementById('email-input-login').value;
-            let senhaDigitada = document.getElementById('password-input-login').value;
-            
+            emailDigitado = document.getElementById('email-input-login').value;
+            senhaDigitada = document.getElementById('password-input-login').value;
             let podeLogar = response.data.some(c => c.email === emailDigitado && c.senha === senhaDigitada);
-
             if(podeLogar) {
                 usuarioListado = response.data.find(colaborador => colaborador.email === emailDigitado && colaborador.senha === senhaDigitada)
                 if(usuarioListado.tipo == 'trabalhador'){
@@ -319,15 +317,16 @@ const mostrarListaDeVagas = (tipo) =>{
     if(tipo=='recrutador'){
         listaDeVagas = document.getElementById('lista-vagas-recrutador')
     } else{
-        listaDeVagas = document.getElementById('lista-vagas-trabalhador')
+        listaDeVagas = document.getElementById('lista-vagas-trabalhador')        
     }
     listaDeVagas.innerHTML = ''
     axios.get('http://localhost:3000/vagas')
     .then(response =>{
         response.data.forEach(response =>{
-            let homeInfo = document.createElement('div')
+            var homeInfo = document.createElement('div')
             homeInfo.setAttribute('class','home-info')
-            
+            homeInfo.setAttribute('id',response.id)
+            homeInfo.addEventListener('click',carregarDescricaoVagaTrabalhador)
 
             let leftInfo = document.createElement('div')
             leftInfo.setAttribute('class','left-info')
@@ -465,6 +464,42 @@ async function CadastrarVaga() {
         irPara('cadastro-vagas', 'home-recrutador')
     }
 }
-    
-    
 
+//função para carregar a descrição da vaga - trabalhador
+var idVagaClicado
+const carregarDescricaoVagaTrabalhador = (e) =>{
+    idVagaClicado = e.target.id
+    let tituloVaga = document.getElementById('vaga-trabalhador-titulo')
+    let descricaoVaga = document.getElementById('vaga-trabalhador-descricao')
+    let remuneracaoVaga = document.getElementById('vaga-trabalhador-remuneracao')
+    tituloVaga.innerHTML = ''
+    descricaoVaga.innerHTML = ''
+    remuneracaoVaga.innerHTML = ''
+
+    irPara('home-trabalhador','detalhe-de-vaga-trabalhador-1')
+
+    axios.get(`http://localhost:3000/vagas/${idVagaClicado}`)
+    .then(response => {
+        let titulo = document.createTextNode(response.data.titulo)
+        tituloVaga.appendChild(titulo)
+        descricaoVaga.appendChild(document.createTextNode(response.data.descricao))
+        remuneracaoVaga.appendChild(document.createTextNode(response.data.remuneracao))
+    })
+}
+
+//função de candidatar trabalhador
+
+const candidatarTrabalhador = async () =>{
+    axios.get('http://localhost:3000/usuarios')
+    .then(response =>{
+        let usuario = response.data.find(usuario => usuario.email == emailDigitado && usuario.senha == senhaDigitada)
+        axios.get('http://localhost:3000/vagas')
+        .then(response =>{
+            let vaga = response.data.find(vaga => vaga.id = idVagaClicado)
+            console.log(usuario)
+            console.log(vaga)
+            let candidatura = new Candidatura(vaga.id,usuario.id,false)
+            axios.post('http://localhost:3000/candidaturas',candidatura)
+        })
+    })
+}

@@ -294,6 +294,7 @@ select {
     align-items: flex-start;
     flex-direction: column;
     box-sizing: border-box;
+    margin-top:20px;
 }
 
 .recrutador-info div {
@@ -301,13 +302,14 @@ select {
     margin-left: 10px;
 }
 
-.recrutador-info h2,span {
+.recrutador-info h2,.description {
     font-weight: bold;
 }
 
 .candidatos-recrutador {
     font-weight: bold;
     font-size: 20px;
+    padding:20px 0px
 }
 
 .tabela-recrutador {
@@ -413,4 +415,8 @@ select {
 
 textarea{
     width: 650px;
+}
+
+.home-info *{
+    pointer-events: none
 }

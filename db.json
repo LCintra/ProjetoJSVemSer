@@ -48,6 +48,21 @@
       "remuneracao": "R$ 1000",
       "candidatos": [],
       "id": 1
+    },
+    {
+      "titulo": "dsadsa",
+      "descricao": "dsadasdsa",
+      "remuneracao": "R$ 12222",
+      "candidatos": [],
+      "id": 2
+    }
+  ],
+  "candidaturas": [
+    {
+      "idVaga": "1",
+      "idCandidato": 0,
+      "reprovado": false,
+      "id": 1
     }
   ]
 }
