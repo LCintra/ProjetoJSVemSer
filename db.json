@@ -57,6 +57,16 @@
         2
       ],
       "id": 4
+    },
+    {
+      "tipo": "trabalhador",
+      "nome": "Thiagoo",
+      "dataNascimento": "12/06/1997",
+      "email": "thiagomarch@hotmail.com",
+      "senha": "Seil@1234",
+      "primeiroEmprego": true,
+      "candidaturas": [],
+      "id": 5
     }
   ],
   "vagas": [
@@ -87,6 +97,27 @@
         2
       ],
       "id": 3
+    },
+    {
+      "titulo": "Java",
+      "descricao": "java pra doido",
+      "remuneracao": "R$ 20000",
+      "candidatos": [],
+      "id": 4
+    },
+    {
+      "titulo": "ux/ui",
+      "descricao": "ux/ui",
+      "remuneracao": "R$ 6000",
+      "candidatos": [],
+      "id": 6
+    },
+    {
+      "titulo": "java2",
+      "descricao": "java2",
+      "remuneracao": "R$ 6000",
+      "candidatos": [],
+      "id": 7
     }
   ],
   "candidaturas": [

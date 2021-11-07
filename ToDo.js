@@ -38,12 +38,12 @@
 
         
         3.2) Se o usuário logado for "Recrutador":
-            a) Terá um botão de "Cadastrar Vaga";
+            a) Terá um botão de "Cadastrar Vaga"; OK
 
             3.2b) Teremos os seguintes campos no cadastro:
-                a) Título (validar se não é uma string vazia apenas);
-                b) Descrição (validar se não é uma string vazia apenas);
-                c) Remuneração (aceitar somente número e validar se é maior que zero);
+                a) Título (validar se não é uma string vazia apenas); OK
+                b) Descrição (validar se não é uma string vazia apenas); OK
+                c) Remuneração (aceitar somente número e validar se é maior que zero); OK
             
             3.2c) Teremos 2 botões, um para "Voltar" (limpa os campos do cadastro e volta para home) e outro para "Cadastrar" (cadastra, limpa os campos, retorna para a home e dá mensagem de cadastro concluído);
 

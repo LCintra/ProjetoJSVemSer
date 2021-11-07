@@ -265,6 +265,18 @@ const limparCamposAoVoltar = () =>{
     let jobDescriptionInput = document.getElementById('job-description-input')
     let jobSalaryInput = document.getElementById('job-salary-input')
     tipoInput.value = 'q1'
+
+    //ERRO DO CADASTRO DE VAGAS
+
+    let errotitulo1 = document.getElementById('job-title-registration-error');
+    errotitulo1.className = errotitulo1.className.replace('text-danger','d-none');
+    let errodescricao1 = document.getElementById('job-description-registration-error');
+    errodescricao1.className = errodescricao1.className.replace('text-danger','d-none');
+    let errosalario1 = document.getElementById('job-salary-number-registration-error');
+    errosalario1.className = errosalario1.className.replace('text-danger','d-none');
+    let errosalario2 = document.getElementById('job-salary-registration-error');
+    errosalario2.className = errosalario2.className.replace('text-danger','d-none');
+
     validarTipoUsuario()
     primeiroEmpregoInput.checked = false
     resetarCampos(nomeInput,dataInput,emailInput,senhaInput, jobTitleInput, jobDescriptionInput, jobSalaryInput)
@@ -462,9 +474,14 @@ async function CadastrarVaga() {
     
     vagaASerInserida.id = newVaga.data.id
 
-    if(newVaga.status === 200){
+    console.log(newVaga.status)
+
+    if(newVaga.status === 201){
+        // console.log('entrou')
         limparCamposAoVoltar()
         irPara('cadastro-vagas', 'home-recrutador')
+
+        alert('Vaga inserida!')
     }
 }
 
