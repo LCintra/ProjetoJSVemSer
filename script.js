@@ -480,26 +480,81 @@ const carregarDescricaoVagaTrabalhador = (e) =>{
 
     axios.get(`http://localhost:3000/vagas/${idVagaClicado}`)
     .then(response => {
+        let vaga = response.data
         let titulo = document.createTextNode(response.data.titulo)
         tituloVaga.appendChild(titulo)
         descricaoVaga.appendChild(document.createTextNode(response.data.descricao))
         remuneracaoVaga.appendChild(document.createTextNode(response.data.remuneracao))
+        
+        axios.get(`http://localhost:3000/usuarios`)
+        .then(response =>{
+            let usuario = response.data.find(usuario => usuario.email == emailDigitado && usuario.senha == senhaDigitada)
+            axios.get(`http://localhost:3000/candidaturas`)
+            .then(response =>{
+                let candidaturas = response.data
+                let divBotao = document.getElementById('div-candidatar-trabalhador')
+                divBotao.innerHTML = ``
+                let botaoCadastrar = document.createElement('button')
+                let buttonText
+                botaoCadastrar.setAttribute('class','button1')
+                if(candidaturas.some(c => c.idVaga == vaga.id && c.idCandidato == usuario.id)){
+                    buttonText = document.createTextNode('Descandidatar-se')
+                    botaoCadastrar.addEventListener('click',descandidatarTrabalhador)
+                } else {
+                    buttonText = document.createTextNode('Candidatar-se')
+                    botaoCadastrar.addEventListener('click',candidatarTrabalhador)
+                }
+                botaoCadastrar.appendChild(buttonText)
+                divBotao.appendChild(botaoCadastrar)
+            })
+        })
     })
 }
 
 //função de candidatar trabalhador
 
-const candidatarTrabalhador = async () =>{
+const candidatarTrabalhador = () =>{
     axios.get('http://localhost:3000/usuarios')
     .then(response =>{
         let usuario = response.data.find(usuario => usuario.email == emailDigitado && usuario.senha == senhaDigitada)
         axios.get('http://localhost:3000/vagas')
         .then(response =>{
-            let vaga = response.data.find(vaga => vaga.id = idVagaClicado)
-            console.log(usuario)
-            console.log(vaga)
+            let vaga = response.data.find(vaga => vaga.id == idVagaClicado)
+
             let candidatura = new Candidatura(vaga.id,usuario.id,false)
+            
+            usuario.candidaturas.push(vaga.id)
+            vaga.candidatos.push(usuario.id)
+
             axios.post('http://localhost:3000/candidaturas',candidatura)
+
+            axios.put(`http://localhost:3000/usuarios/${usuario.id}`,usuario)
+
+            axios.put(`http://localhost:3000/vagas/${vaga.id}`,vaga)
+        })
+    })
+}
+
+const descandidatarTrabalhador = () =>{
+    axios.get('http://localhost:3000/usuarios')
+    .then(response =>{
+        let usuario = response.data.find(usuario => usuario.email == emailDigitado && usuario.senha == senhaDigitada)
+        axios.get('http://localhost:3000/vagas')
+        .then(response =>{
+            let vaga = response.data.find(vaga => vaga.id == idVagaClicado)
+            axios.get('http://localhost:3000/candidaturas')
+            .then(response =>{
+                let candidatura = response.data.find(candidatura => candidatura.idVaga == vaga.id && candidatura.idCandidato == usuario.id)
+                axios.delete(`http://localhost:3000/candidaturas/${candidatura.id}`)
+
+                usuario.candidaturas = usuario.candidaturas.filter(candidaturas => candidaturas != vaga.id)
+                vaga.candidatos = vaga.candidatos.filter(candidatos => candidatos != usuario.id)
+                console.log(usuario.candidaturas)
+                console.log(vaga.candidatos)
+                
+                axios.put(`http://localhost:3000/usuarios/${usuario.id}`,usuario)
+                axios.put(`http://localhost:3000/vagas/${vaga.id}`,vaga)
+            })
         })
     })
 }

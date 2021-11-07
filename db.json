@@ -5,10 +5,11 @@
       "nome": "Trabalhador Teste",
       "email": "a",
       "senha": "a",
-      "data": "12/11/2002",
-      "id": 0,
       "primeiroEmprego": true,
-      "candidaturas": []
+      "candidaturas": [
+        2
+      ],
+      "id": 0
     },
     {
       "tipo": "recrutador",
@@ -50,16 +51,25 @@
       "id": 1
     },
     {
-      "titulo": "dsadsa",
-      "descricao": "dsadasdsa",
-      "remuneracao": "R$ 12222",
-      "candidatos": [],
+      "titulo": "Vaga 2",
+      "descricao": "dasdad",
+      "remuneracao": "R$ 2000",
+      "candidatos": [
+        0
+      ],
       "id": 2
+    },
+    {
+      "titulo": "Vaga 3",
+      "descricao": "dasdsa",
+      "remuneracao": "R$ 4000",
+      "candidatos": [],
+      "id": 3
     }
   ],
   "candidaturas": [
     {
-      "idVaga": "1",
+      "idVaga": 2,
       "idCandidato": 0,
       "reprovado": false,
       "id": 1
