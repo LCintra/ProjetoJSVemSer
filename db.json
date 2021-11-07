@@ -7,10 +7,7 @@
       "senha": "a",
       "dataNascimento": "22/11/2002",
       "primeiroEmprego": true,
-      "candidaturas": [
-        2,
-        3
-      ],
+      "candidaturas": [],
       "id": 0
     },
     {
@@ -67,6 +64,36 @@
       "primeiroEmprego": true,
       "candidaturas": [],
       "id": 5
+    },
+    {
+      "tipo": "trabalhador",
+      "nome": "Carla",
+      "dataNascimento": "04/02/1995",
+      "email": "arcksiix@gmail.com",
+      "senha": "d0sad0aD!dsao0",
+      "primeiroEmprego": true,
+      "candidaturas": [],
+      "id": 6
+    },
+    {
+      "tipo": "trabalhador",
+      "nome": "Joana",
+      "dataNascimento": "01/03/1950",
+      "email": "teste@gmail.com",
+      "senha": "Aa!DAP32",
+      "primeiroEmprego": true,
+      "candidaturas": [],
+      "id": 7
+    },
+    {
+      "tipo": "trabalhador",
+      "nome": "Carla",
+      "dataNascimento": "22/11/2002",
+      "email": "teste@gmail.com",
+      "senha": "dsa#132DSA",
+      "primeiroEmprego": true,
+      "candidaturas": [],
+      "id": 8
     }
   ],
   "vagas": [
@@ -82,7 +109,6 @@
       "descricao": "dasdad",
       "remuneracao": "R$ 2000",
       "candidatos": [
-        0,
         2,
         4
       ],
@@ -93,7 +119,6 @@
       "descricao": "dasdsa",
       "remuneracao": "R$ 4000",
       "candidatos": [
-        0,
         2
       ],
       "id": 3
@@ -118,26 +143,49 @@
       "remuneracao": "R$ 6000",
       "candidatos": [],
       "id": 7
+    },
+    {
+      "titulo": "yyggy",
+      "descricao": "",
+      "remuneracao": "R$ 1000",
+      "candidatos": [],
+      "id": 8
+    },
+    {
+      "titulo": "Vaguinha Java",
+      "descricao": "vaga de java",
+      "remuneracao": "R$ 40000",
+      "candidatos": [],
+      "id": 9
+    },
+    {
+      "titulo": "juihuhuhuhu",
+      "descricao": "hyhutyhhut",
+      "remuneracao": "R$ 1222",
+      "candidatos": [],
+      "id": 10
+    },
+    {
+      "titulo": "kkkkkkkkkk",
+      "descricao": "kkkkkkkkkk",
+      "remuneracao": "R$ 60000",
+      "candidatos": [],
+      "id": 11
+    },
+    {
+      "titulo": "sssssssssssss",
+      "descricao": "ssssssssssssss",
+      "remuneracao": "R$ 320000",
+      "candidatos": [],
+      "id": 12
     }
   ],
   "candidaturas": [
     {
       "idVaga": 2,
-      "idCandidato": 0,
-      "reprovado": false,
-      "id": 1
-    },
-    {
-      "idVaga": 2,
       "idCandidato": 2,
       "reprovado": false,
       "id": 2
-    },
-    {
-      "idVaga": 3,
-      "idCandidato": 0,
-      "reprovado": false,
-      "id": 4
     },
     {
       "idVaga": 3,

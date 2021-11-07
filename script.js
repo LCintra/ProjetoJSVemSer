@@ -195,10 +195,13 @@ const adicionarMascaraData = (input, data) => {
 
 const validarCadastro = () => {
     let cadastroValido = validarData() && validarEmail() && validarSenha() && validarNome();
-    console.log(`Cadastro ${cadastroValido ? 'válido!' : 'inválido'}`);
 
     if(cadastroValido) {
         cadastrarUsuario();
+        alert('Cadastro realizado com sucesso')
+        irPara('cadastro','login')
+    } else{
+        alert('Cadastro Inválido')
     }
 }
 
@@ -432,7 +435,6 @@ const validaRemuneracao = () =>{
         erroSalary2.classList.remove('d-none')
         erroSalary2.classList.add('text-danger')
         erroSalary2.style.paddingTop = '10px'
-
         valid = false
     } else if ( !Number(salary)) {
         erroSalary.classList.remove('d-none')
@@ -445,15 +447,16 @@ const validaRemuneracao = () =>{
         erroSalary.classList.add('d-none')
         erroSalary2.classList.add('d-none')
     }
-
+    console.log(valid)
     return valid
 }
 
 // CADASTRO DE VAGAS
 function validaCampos() {
-    if(validaTitulo() && validaRemuneracao && validaDescricao){
+    if(validaTitulo() && validaRemuneracao() && validaDescricao()){
         return true
     } else{
+        alert('Campos inválidos')
         return false
     }
 }
@@ -479,8 +482,8 @@ async function CadastrarVaga() {
     if(newVaga.status === 201){
         // console.log('entrou')
         limparCamposAoVoltar()
+        mostrarListaDeVagas('recrutador')
         irPara('cadastro-vagas', 'home-recrutador')
-
         alert('Vaga inserida!')
     }
 }
@@ -622,6 +625,8 @@ const candidatarTrabalhador = () =>{
             axios.put(`http://localhost:3000/usuarios/${usuario.id}`,usuario)
 
             axios.put(`http://localhost:3000/vagas/${vaga.id}`,vaga)
+
+            irPara('detalhe-de-vaga-trabalhador-1','home-trabalhador')
         })
     })
 }
@@ -647,6 +652,7 @@ const descandidatarTrabalhador = () =>{
                 
                 axios.put(`http://localhost:3000/usuarios/${usuario.id}`,usuario)
                 axios.put(`http://localhost:3000/vagas/${vaga.id}`,vaga)
+                irPara('detalhe-de-vaga-trabalhador-1','home-trabalhador')
             })
         })
     })
