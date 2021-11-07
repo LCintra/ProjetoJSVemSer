@@ -518,8 +518,8 @@ const carregarDescricaoVagaTrabalhador = (e) =>{
                        let novaTr = document.createElement('tr')
                        let novaTd1 = document.createElement('td')
                        //se for o usuário logado
-                       let usuario = responseUsuarios.data.find(usuario => usuario.email == emailDigitado && usuario.senha == senhaDigitada)
-                       if(idCandidato == usuario.id){
+                       let candidatura = candidaturas.find(candidatura => candidatura.idVaga == idVagaClicado && candidatura.idCandidato == idCandidato)
+                       if(candidatura != undefined && candidatura.reprovado == true){
                            novaTd1.className = 'text-danger'
                        }
                        let novaTd2 = document.createElement('td')
@@ -543,6 +543,44 @@ const carregarDescricaoVagaTrabalhador = (e) =>{
 const carregarDescricaoVagaRecrutador = (e) =>{
     irPara('home-recrutador','detalhe-de-vaga-recrutador')
     idVagaClicado = e.target.id
+    let tituloVaga = document.getElementById('vaga-recrutador-titulo')
+    let descricaoVaga = document.getElementById('vaga-recrutador-descricao')
+    let remuneracaoVaga = document.getElementById('vaga-recrutador-remuneracao')
+    let tabelaRecrutadores = document.getElementById('table-recrutadores-cadastrados')
+    tabelaRecrutadores.innerHTML = ''
+    tituloVaga.innerHTML = ''
+    descricaoVaga.innerHTML = ''
+    remuneracaoVaga.innerHTML = ''
+    axios.get(`http://localhost:3000/vagas/${idVagaClicado}`)
+    .then(responseVaga =>{
+        let vaga = responseVaga.data
+        let titulo = document.createTextNode(responseVaga.data.titulo)
+        tituloVaga.appendChild(titulo)
+        descricaoVaga.appendChild(document.createTextNode(responseVaga.data.descricao))
+        remuneracaoVaga.appendChild(document.createTextNode(responseVaga.data.remuneracao))
+        axios.get(`http://localhost:3000/usuarios/`)
+        .then(responseUsuario =>{
+            vaga.candidatos.map(idCandidato =>{
+                let candidato = responseUsuario.data.find(candidato => candidato.id == idCandidato)
+                let novaTr = document.createElement('tr')
+                let novaTd1 = document.createElement('td')
+                let novaTd2 = document.createElement('td')
+                let novaTd3 = document.createElement('td')
+                let novoBotao = document.createElement('button')
+                let nomeUsuario = document.createTextNode(candidato.nome)
+                let dataNascimento = document.createTextNode(candidato.dataNascimento)
+                let textoBotao = document.createTextNode('Reprovar')
+                novoBotao.appendChild(textoBotao)
+                novaTd1.appendChild(nomeUsuario)
+                novaTd2.appendChild(dataNascimento)
+                novaTd3.appendChild(novoBotao)
+                novaTr.appendChild(novaTd1)
+                novaTr.appendChild(novaTd2)
+                novaTr.appendChild(novaTd3)
+                tabelaRecrutadores.appendChild(novaTr)
+            })
+        })
+    })
 }
 
 //função de candidatar trabalhador
