@@ -44,9 +44,14 @@ class Vaga{
         this.candidatos = candidatos;
     }
     formataRemuneracao = (remuneracao) => {
-        if(remuneracao[0] != 'R' && remuneracao[1] != '$'){
-            remuneracao = 'R$ ' + remuneracao
+        while(remuneracao.indexOf('.') != -1){
+            remuneracao = remuneracao.replace(".","")
         }
+        if(remuneracao.indexOf(',') != -1){
+            remuneracao = remuneracao.replace(',','.')
+        }
+        remuneracao = new Intl.NumberFormat('id').format(remuneracao)
+        remuneracao = 'R$' + remuneracao
         return remuneracao
     }
 }
@@ -312,6 +317,7 @@ const validarLogin = () => {
                 }
             } else{
                 alert('Usuário ou E-mail Inválidos')
+                limparCamposAoSairDoLogin()
             }
             
         })
@@ -449,7 +455,7 @@ const validaRemuneracao = () =>{
         erroSalary2.classList.add('text-danger')
         erroSalary2.style.paddingTop = '10px'
         valid = false
-    } else if ( !Number(salary)) {
+    } else if (salary.split('').some(caracter => caracter.toLowerCase() != caracter.toUpperCase())) {
         erroSalary.classList.remove('d-none')
         erroSalary.classList.add('text-danger')
         erroSalary.style.paddingTop = '10px'
