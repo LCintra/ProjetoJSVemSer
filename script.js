@@ -461,6 +461,36 @@ function validaCampos() {
     }
 }
 
+//função de excluir vaga
+
+const excluirVaga = () =>{
+    console.log(idVagaClicado)
+    axios.delete(`http://localhost:3000/vagas/${idVagaClicado}`)
+    axios.get(`http://localhost:3000/candidaturas`)
+    .then(response =>{
+        response.data.forEach(candidatura =>{
+            if(candidatura.idVaga==idVagaClicado){
+                axios.delete(`http://localhost:3000/candidaturas/${candidatura.id}`)
+            }
+        })
+    })
+    axios.get(`http://localhost:3000/usuarios`)
+    .then(response =>{
+        response.data.map(usuario => {
+            if(usuario.candidaturas.some(id => id == idVagaClicado)){
+                usuario.candidaturas = usuario.candidaturas.filter(idVaga =>{
+                    return idVaga != idVagaClicado
+                })
+                console.log(usuario.candidaturas,'Usuario Candidaturas depois do filter')
+                axios.put(`http://localhost:3000/usuarios/${usuario.id}`,usuario)
+            }
+        })
+    })
+    mostrarListaDeVagas('recrutador')
+    irPara('detalhe-de-vaga-recrutador','home-recrutador')
+}
+
+//cadastrar Vaga
 const buttonVaga = document.getElementById('cadastrar-nova-vaga')
 
 async function CadastrarVaga() {
@@ -682,3 +712,4 @@ const descandidatarTrabalhador = () =>{
         })
     })
 }
+
