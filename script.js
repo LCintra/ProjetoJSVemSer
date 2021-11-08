@@ -182,7 +182,6 @@ const validarData = () => {
 const adicionarMascaraData = (input, data) => {
     let listaCaracteres = [...data];
     let inputArray = input.value.split('')
-    console.log(inputArray)
 
     let naoTemLetras = inputArray.some(caracter => caracter.toUpperCase() != caracter.toLowerCase())
 
@@ -340,7 +339,6 @@ const esqueceuASenha = () =>{
         } else {
             alert('Não há nenhum usuário cadastrado com esse e-mail!')
         } 
-        console.log(emailInserido)
     })
 }
 
