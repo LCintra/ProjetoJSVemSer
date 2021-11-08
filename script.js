@@ -449,7 +449,6 @@ const validaRemuneracao = () =>{
         erroSalary.classList.add('d-none')
         erroSalary2.classList.add('d-none')
     }
-    console.log(valid)
     return valid
 }
 
@@ -466,7 +465,6 @@ function validaCampos() {
 //função de excluir vaga
 
 const excluirVaga = () =>{
-    console.log(idVagaClicado)
     axios.delete(`http://localhost:3000/vagas/${idVagaClicado}`)
     axios.get(`http://localhost:3000/candidaturas`)
     .then(response =>{
@@ -483,7 +481,6 @@ const excluirVaga = () =>{
                 usuario.candidaturas = usuario.candidaturas.filter(idVaga =>{
                     return idVaga != idVagaClicado
                 })
-                console.log(usuario.candidaturas,'Usuario Candidaturas depois do filter')
                 axios.put(`http://localhost:3000/usuarios/${usuario.id}`,usuario)
             }
         })
@@ -509,10 +506,8 @@ async function CadastrarVaga() {
     
     vagaASerInserida.id = newVaga.data.id
 
-    console.log(newVaga.status)
 
     if(newVaga.status === 201){
-        // console.log('entrou')
         limparCamposAoVoltar()
         mostrarListaDeVagas('recrutador')
         irPara('cadastro-vagas', 'home-recrutador')
