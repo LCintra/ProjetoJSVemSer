@@ -166,7 +166,7 @@ const validarData = () => {
     // comparações de data - date1.isBefore(date2)  /  date1.isAfter(date2)  /  date1.isSameOrBefore(date2)  /  date1.isSameOrAfter(date2)
     let dataAnteriorHoje = dataConvertida.isBefore(moment());
 
-    let ehValido = dataConvertida.isValid() && dataAnteriorHoje && dezoitoAnosAtras && dataDigitada.length === 10 && naoTemLetras; // 10/05/2001
+    let ehValido = dataConvertida.isValid() && dataAnteriorHoje && dezoitoAnosAtras && dataDigitada.length === 10 && !naoTemLetras; // 10/05/2001
 
     // para setar o texto de erro em vermelho
     erroData.setAttribute('class', ehValido ? 'd-none' : 'text-danger');
@@ -204,6 +204,7 @@ const validarCadastro = () => {
 
     if(cadastroValido) {
         cadastrarUsuario();
+        limparCamposAoVoltar()
         alert('Cadastro realizado com sucesso')
         irPara('cadastro','login')
     } else{
