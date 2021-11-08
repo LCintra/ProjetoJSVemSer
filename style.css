@@ -350,7 +350,6 @@ select {
 }
 
 .tabela-recrutador button {
-    background-color: red;
     color: white;
     width: 80px;
     height: 30px;
@@ -430,4 +429,21 @@ textarea{
 
 .cadastro-de-vagas {
     margin-top: 25%;
+}
+
+.button-bg-gray{
+    background-color:#353A40;
+}
+
+.button-bg-red{
+    background-color: red;
+    cursor:none;
+}
+
+.button-bg-light-gray{
+    background-color:#7e7e7e;
+}
+
+#detalhe-de-vaga-recrutador, #detalhe-de-vaga-trabalhador-1{
+    padding-bottom:40px;
 }

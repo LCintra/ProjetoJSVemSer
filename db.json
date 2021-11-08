@@ -7,7 +7,11 @@
       "senha": "a",
       "dataNascimento": "22/11/2002",
       "primeiroEmprego": true,
-      "candidaturas": [],
+      "candidaturas": [
+        4,
+        3,
+        1
+      ],
       "id": 0
     },
     {
@@ -101,7 +105,9 @@
       "titulo": "Vaga 1",
       "descricao": "sdadsdsa",
       "remuneracao": "R$ 1000",
-      "candidatos": [],
+      "candidatos": [
+        0
+      ],
       "id": 1
     },
     {
@@ -119,7 +125,8 @@
       "descricao": "dasdsa",
       "remuneracao": "R$ 4000",
       "candidatos": [
-        2
+        2,
+        0
       ],
       "id": 3
     },
@@ -127,7 +134,9 @@
       "titulo": "Java",
       "descricao": "java pra doido",
       "remuneracao": "R$ 20000",
-      "candidatos": [],
+      "candidatos": [
+        0
+      ],
       "id": 4
     },
     {
@@ -184,20 +193,38 @@
     {
       "idVaga": 2,
       "idCandidato": 2,
-      "reprovado": false,
+      "reprovado": true,
       "id": 2
     },
     {
       "idVaga": 3,
       "idCandidato": 2,
-      "reprovado": false,
+      "reprovado": true,
       "id": 5
     },
     {
       "idVaga": 2,
       "idCandidato": 4,
-      "reprovado": false,
+      "reprovado": true,
       "id": 6
+    },
+    {
+      "idVaga": 4,
+      "idCandidato": 0,
+      "reprovado": true,
+      "id": 8
+    },
+    {
+      "idVaga": 3,
+      "idCandidato": 0,
+      "reprovado": true,
+      "id": 11
+    },
+    {
+      "idVaga": 1,
+      "idCandidato": 0,
+      "reprovado": false,
+      "id": 13
     }
   ]
 }

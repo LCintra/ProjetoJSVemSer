@@ -524,20 +524,25 @@ const carregarDescricaoVagaTrabalhador = (e) =>{
                 botaoCadastrar.setAttribute('class','button1')
                 if(candidaturas.some(c => c.idVaga == vaga.id && c.idCandidato == usuario.id)){
                     buttonText = document.createTextNode('Descandidatar-se')
-                    botaoCadastrar.addEventListener('click',descandidatarTrabalhador)
+                    let candidaturaDaPessoaLogada = candidaturas.find(c => c.idVaga == vaga.id && c.idCandidato == usuario.id)
+                        //se o usuário que está logado for reprovado
+                        if(candidaturaDaPessoaLogada.reprovado == true){
+                            botaoCadastrar.setAttribute('class','.button-bg-light-gray')
+                        } else {
+                            botaoCadastrar.addEventListener('click',descandidatarTrabalhador)
+                        }                  
                 } else {
                     buttonText = document.createTextNode('Candidatar-se')
                     botaoCadastrar.addEventListener('click',candidatarTrabalhador)
                 }
                 botaoCadastrar.appendChild(buttonText)
                 divBotao.appendChild(botaoCadastrar)
-
                 //mostrar as pessoas que estão trabalhando no projeto dinamicamente
                 vaga.candidatos.map(idCandidato => {
                        let candidato = responseUsuarios.data.find(candidato => candidato.id == idCandidato)
                        let novaTr = document.createElement('tr')
                        let novaTd1 = document.createElement('td')
-                       //se for o usuário logado
+                       //se o usuário estiver reprovado
                        let candidatura = candidaturas.find(candidatura => candidatura.idVaga == idVagaClicado && candidatura.idCandidato == idCandidato)
                        if(candidatura != undefined && candidatura.reprovado == true){
                            novaTd1.className = 'text-danger'
@@ -587,6 +592,18 @@ const carregarDescricaoVagaRecrutador = (e) =>{
                 let novaTd2 = document.createElement('td')
                 let novaTd3 = document.createElement('td')
                 let novoBotao = document.createElement('button')
+                novoBotao.setAttribute('id',idCandidato)
+                axios.get(`http://localhost:3000/candidaturas`)
+                .then(response =>{
+                    let candidaturaDoUsuario = response.data.find(candidatura => candidatura.idVaga == vaga.id && candidatura.idCandidato == idCandidato)
+                    if(candidaturaDoUsuario.reprovado == true){
+                        novoBotao.setAttribute('class','button-bg-gray')
+                        novaTd1.setAttribute('class','text-danger')
+                    } else{
+                        novoBotao.setAttribute('class','button-bg-red')
+                        novoBotao.addEventListener('click',reprovarCandidato)
+                    }
+                })
                 let nomeUsuario = document.createTextNode(candidato.nome)
                 let dataNascimento = document.createTextNode(candidato.dataNascimento)
                 let textoBotao = document.createTextNode('Reprovar')
@@ -600,6 +617,18 @@ const carregarDescricaoVagaRecrutador = (e) =>{
                 tabelaRecrutadores.appendChild(novaTr)
             })
         })
+    })
+}
+
+//função de reprovar candidato
+
+const reprovarCandidato = (e) =>{
+    axios.get(`http://localhost:3000/candidaturas`)
+    .then(response =>{
+        let candidatura = response.data.find(candidatura => candidatura.idCandidato == e.target.id && candidatura.idVaga == idVagaClicado)
+        candidatura.reprovado = true
+        axios.put(`http://localhost:3000/candidaturas/${candidatura.id}`,candidatura)
+        irPara('detalhe-de-vaga-recrutador','home-recrutador')
     })
 }
 
@@ -617,8 +646,6 @@ const candidatarTrabalhador = () =>{
             
             usuario.candidaturas.push(vaga.id)
             vaga.candidatos.push(usuario.id)
-            console.log(vaga.candidatos)
-            console.log(usuario.id)
 
             axios.post('http://localhost:3000/candidaturas',candidatura)
 
@@ -647,8 +674,6 @@ const descandidatarTrabalhador = () =>{
 
                 usuario.candidaturas = usuario.candidaturas.filter(candidaturas => candidaturas != vaga.id)
                 vaga.candidatos = vaga.candidatos.filter(candidatos => candidatos != usuario.id)
-                console.log(usuario.candidaturas)
-                console.log(vaga.candidatos)
                 
                 axios.put(`http://localhost:3000/usuarios/${usuario.id}`,usuario)
                 axios.put(`http://localhost:3000/vagas/${vaga.id}`,vaga)
