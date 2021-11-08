@@ -7,9 +7,7 @@
       "senha": "a",
       "dataNascimento": "22/11/2002",
       "primeiroEmprego": true,
-      "candidaturas": [
-        3
-      ],
+      "candidaturas": [],
       "id": 0
     },
     {
@@ -29,9 +27,7 @@
       "email": "teste@gmail,com",
       "senha": "senha321",
       "primeiroEmprego": false,
-      "candidaturas": [
-        3
-      ],
+      "candidaturas": [],
       "id": 2
     },
     {
@@ -95,30 +91,6 @@
       "id": 8
     }
   ],
-  "vagas": [
-    {
-      "titulo": "Vaga 3",
-      "descricao": "dasdsa",
-      "remuneracao": "R$ 4000",
-      "candidatos": [
-        2,
-        0
-      ],
-      "id": 3
-    }
-  ],
-  "candidaturas": [
-    {
-      "idVaga": 3,
-      "idCandidato": 2,
-      "reprovado": true,
-      "id": 5
-    },
-    {
-      "idVaga": 3,
-      "idCandidato": 0,
-      "reprovado": true,
-      "id": 11
-    }
-  ]
+  "vagas": [],
+  "candidaturas": []
 }

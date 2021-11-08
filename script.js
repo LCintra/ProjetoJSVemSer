@@ -155,6 +155,8 @@ const validarData = () => {
     let erroData = document.getElementById('date-registration-error')
     let dataDigitada = inputData.value;
 
+    let naoTemLetras = dataDigitada.split('').some(caracter => caracter.toUpperCase() != caracter.toLowerCase())
+
     adicionarMascaraData(inputData, dataDigitada);
 
     let dataConvertida = moment(dataDigitada, 'DDMMYYYY');
@@ -164,7 +166,7 @@ const validarData = () => {
     // comparações de data - date1.isBefore(date2)  /  date1.isAfter(date2)  /  date1.isSameOrBefore(date2)  /  date1.isSameOrAfter(date2)
     let dataAnteriorHoje = dataConvertida.isBefore(moment());
 
-    let ehValido = dataConvertida.isValid() && dataAnteriorHoje && dezoitoAnosAtras && dataDigitada.length === 10; // 10/05/2001
+    let ehValido = dataConvertida.isValid() && dataAnteriorHoje && dezoitoAnosAtras && dataDigitada.length === 10 && naoTemLetras; // 10/05/2001
 
     // para setar o texto de erro em vermelho
     erroData.setAttribute('class', ehValido ? 'd-none' : 'text-danger');
@@ -174,8 +176,12 @@ const validarData = () => {
 
 const adicionarMascaraData = (input, data) => {
     let listaCaracteres = [...data];
-    
-    if(listaCaracteres && listaCaracteres.length) {
+    let inputArray = input.value.split('')
+    console.log(inputArray)
+
+    let naoTemLetras = inputArray.some(caracter => caracter.toUpperCase() != caracter.toLowerCase())
+
+    if(listaCaracteres && listaCaracteres.length && !naoTemLetras) {
         let dataDigitada = listaCaracteres.filter(c => !isNaN(parseInt(c))).reduce((a, b) => a + b);
         const { length } = dataDigitada;
 
@@ -318,12 +324,16 @@ const esqueceuASenha = () =>{
     axios.get('http://localhost:3000/usuarios')
     .then(response => {
         let emailExiste = response.data.some(colaborador => colaborador.email == emailInserido)
-        if(emailExiste){
+        if (emailInserido == null){
+            alert('Não foi inserido nada')
+        }
+        else if(emailExiste){
             let colaborador = response.data.find(colaborador => colaborador.email == emailInserido)
             alert(`Sua senha é ${colaborador.senha}`)
         } else {
             alert('Não há nenhum usuário cadastrado com esse e-mail!')
-        }
+        } 
+        console.log(emailInserido)
     })
 }
 
