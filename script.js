@@ -303,6 +303,8 @@ const validarLogin = () => {
                     irPara('login', 'home-recrutador')
                     mostrarListaDeVagas('recrutador')
                 }
+            } else{
+                alert('Usuário ou E-mail Inválidos')
             }
             
         })
