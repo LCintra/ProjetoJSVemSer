@@ -331,7 +331,7 @@ const esqueceuASenha = () =>{
     .then(response => {
         let emailExiste = response.data.some(colaborador => colaborador.email == emailInserido)
         if (emailInserido == null){
-            alert('Não foi inserido nada')
+            alert('Por favor insira seu e-mail')
         }
         else if(emailExiste){
             let colaborador = response.data.find(colaborador => colaborador.email == emailInserido)
